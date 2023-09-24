@@ -1,0 +1,35 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  become: true
+  user: name=aur_builder
+
+  tasks:
+    - name: Update sudoers for aur_builder
+      lineinfile:
+         path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
+         state: present
+         line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
+         validate: /usr/sbin/visudo -cf %s
+         create: yes
+
+    - name: Update cache, the equivalent of "pacman -Sy"
+      community.general.pacman:
+        update_cache: true
+
+    - name: Install paru
+      community.general.pacman:
+        name: paru
+        state: present
+
+
+
+
+
+
+
+    - name: Full system upgrade
+      community.general.pacman:
+        update_cache: true
+        upgrade: true
+
