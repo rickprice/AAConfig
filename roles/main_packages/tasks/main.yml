@@ -1,0 +1,16 @@
+- name: Install main packages
+  community.general.pacman:
+    name: 
+      - git-delta-git
+      - perl
+      - perl-local-lib
+      - perl-archive-zip
+      - cpanminus
+      - lazygit
+      - xorg-xinput
+      - solaar
+      - xpub
+      - github-cli
+      - difftastic
+    executable: paru
+    state: present

@@ -3,6 +3,8 @@
   connection: local
   become: true
   user: name=aur_builder
+  roles:
+    - main_packages
 
   tasks:
     - name: Update sudoers for aur_builder
