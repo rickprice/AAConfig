@@ -4,34 +4,6 @@
   become: true
   user: name=aur_builder
   roles:
+    - initial_setup
     - main_packages
-
-  tasks:
-    - name: Update sudoers for aur_builder
-      lineinfile:
-         path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
-         state: present
-         line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
-         validate: /usr/sbin/visudo -cf %s
-         create: yes
-
-    - name: Update cache, the equivalent of "pacman -Sy"
-      community.general.pacman:
-        update_cache: true
-
-    - name: Install paru
-      community.general.pacman:
-        name: paru
-        state: present
-
-
-
-
-
-
-
-    - name: Full system upgrade
-      community.general.pacman:
-        update_cache: true
-        upgrade: true
-
+    - final_setup
