@@ -1,0 +1,29 @@
+- name: Install power packages and setup
+  community.general.pacman:
+    name: 
+      - acpi
+    executable: paru
+    state: present
+
+- name: Enable tlp service
+  ansible.builtin.systemd:
+    name: tlp
+    state: started
+    enabled: true
+
+- name: Enable Networkmanager-dispatcher service
+  ansible.builtin.systemd:
+    name: NetworkManager-dispatcher
+    state: started
+    enabled: true
+
+- name: Mask systemd-rfkill service
+  ansible.builtin.systemd:
+    name: systemd-rfkill
+    masked: true
+
+- name: Mask systemd-rfkill.socket service
+  ansible.builtin.systemd:
+    name: systemd-rfkill.socket
+    masked: true
+
