@@ -1,4 +1,4 @@
-- name: Install main packages
+- name: Install bit utilities
   community.general.pacman:
     name: 
       - rclone

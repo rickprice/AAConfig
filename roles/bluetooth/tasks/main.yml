@@ -1,14 +1,10 @@
-- name: Install main packages
+
+- name: Install bluetooth packages and setup
   community.general.pacman:
     name: 
-      - pa-applet-git 
-      - pavucontrol
-      - sof-firmware
-      - alsa-utils
-      - pipewire-pulse 
-      - pipewire-jack 
-      - pipewire-alsa 
-      - wireplumber 
-      - qpwgraph
+      - bluez
+      - bluez-utils
+      - bluez-hid2hci
+      - blueman
     executable: paru
     state: present
