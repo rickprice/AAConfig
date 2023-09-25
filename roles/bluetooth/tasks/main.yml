@@ -1,3 +1,13 @@
+- name: Ensure 'lp' group exists
+  ansible.builtin.group:
+    name: lp
+    state: present
+
+- name: Add the user 'FIXME' to the lp group
+  ansible.builtin.user:
+    name: FIXME
+    groups: lp
+    append: yes
 
 - name: Install bluetooth packages and setup
   community.general.pacman:
