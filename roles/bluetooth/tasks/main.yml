@@ -1,11 +1,15 @@
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
 - name: Ensure 'lp' group exists
   ansible.builtin.group:
     name: lp
     state: present
 
-- name: Add the user 'FIXME' to the lp group
+- name: Add the user '{{ remote_regular_user }}' to the lp group
   ansible.builtin.user:
-    name: FIXME
+    name: '{{ remote_regular_user }}'
     groups: lp
     append: yes
 
@@ -18,3 +22,9 @@
       - blueman
     executable: paru
     state: present
+
+- name: Enable bluetooth service
+  ansible.builtin.systemd:
+    name: bluetooth
+    state: started
+    enabled: true

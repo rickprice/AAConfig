@@ -6,4 +6,5 @@
   roles:
     - initial_setup
     - main_packages
+    - bluetooth
     - final_setup
