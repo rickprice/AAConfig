@@ -1,0 +1,17 @@
+- name: Install filesystem packages
+  community.general.pacman:
+    name: 
+      - ntfs-3g
+      - ntfsprogs
+      - dosfstools
+      - gnome-disk-utility
+      - gparted
+      - util-linux
+    executable: paru
+    state: present
+
+- name: Enable SSD Trimming service
+  ansible.builtin.systemd:
+    name: fstrim.timer
+    state: started
+    enabled: true

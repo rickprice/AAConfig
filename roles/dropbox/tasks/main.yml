@@ -1,0 +1,15 @@
+- name: Install dropbox packages
+  community.general.pacman:
+    name: 
+      - dropbox
+      - gt5-base
+      - python-gpgme
+    executable: paru
+    state: present
+
+
+
+- name: From the Arch Wiki Prevent Automatic updates which always go wrong...
+  ansible.builtin.shell: |
+    rm -rf ~/.dropbox-dist &&
+    install -dm0 ~/.dropbox-dist

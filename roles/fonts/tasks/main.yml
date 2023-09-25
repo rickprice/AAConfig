@@ -1,0 +1,30 @@
+- name: Install general fonts
+  community.general.pacman:
+    name: 
+      - xorg-xfontsel
+      - nerd-fonts-complete
+      - ttf-iosevka
+      - noto-fonts
+      - noto-fonts-emoji
+      - noto-fonts-extra
+      - ttf-linux-libertine
+      - powerline-fonts
+      - adobe-source-code-pro-fonts
+      - ttf-font-awesome
+    executable: paru
+    state: present
+
+- name: Install Cambria and Garamond fonts
+  community.general.pacman:
+    name: 
+      - ttf-vista-fonts
+      - ebgaramond-otf
+    executable: paru
+    state: present
+
+- name: Install Amazon fonts
+  community.general.pacman:
+    name: 
+      - amazon-fonts
+    executable: paru
+    state: present

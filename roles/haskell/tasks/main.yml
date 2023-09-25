@@ -1,0 +1,6 @@
+- name: Install haskell packages
+  community.general.pacman:
+    name: 
+      - ghcup-hs-bin
+    executable: paru
+    state: present
