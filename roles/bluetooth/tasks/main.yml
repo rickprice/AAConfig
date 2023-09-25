@@ -1,0 +1,14 @@
+- name: Install main packages
+  community.general.pacman:
+    name: 
+      - pa-applet-git 
+      - pavucontrol
+      - sof-firmware
+      - alsa-utils
+      - pipewire-pulse 
+      - pipewire-jack 
+      - pipewire-alsa 
+      - wireplumber 
+      - qpwgraph
+    executable: paru
+    state: present
