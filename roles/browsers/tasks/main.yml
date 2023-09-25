@@ -1,0 +1,8 @@
+- name: Install browser packages
+  community.general.pacman:
+    name: 
+      - google-chrome
+      - firefox-developer-edition
+      - nyxt
+    executable: paru
+    state: present

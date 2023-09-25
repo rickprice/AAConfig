@@ -1,0 +1,6 @@
+- name: Install database packages
+  community.general.pacman:
+    name: 
+      - dbeaver
+    executable: paru
+    state: present

@@ -1,0 +1,8 @@
+- name: Install communications packages
+  community.general.pacman:
+    name: 
+      - discord
+      - slack-desktop
+      - zoom
+    executable: paru
+    state: present
