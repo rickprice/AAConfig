@@ -2,5 +2,7 @@
   community.general.pacman:
     name: 
       - ghcup-hs-bin
+      # Haskell source code formatter
+      - fourmolu
     executable: paru
     state: present
