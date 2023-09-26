@@ -1,0 +1,32 @@
+- name: Install main packages
+  community.general.pacman:
+    name: 
+      # I3 stuff in general
+      - i3exit
+      - polkit-gnome
+      - variety
+      - picom
+      - xautolock
+      - i3-scrot
+      - xorg-xkill
+      - xorg-xwininfo
+      # XMonad
+      - xmonad
+      - xmonad-contrib
+      - stack
+      - xorg-fonts-misc
+      # Toaster notifications
+      - wired
+      - feh
+      - gnome-system-monitor
+      - dmenu-frecency-git
+      - volumeicon
+      - xfce4-power-manager
+      - pamac-aur
+      - network-manager-applet
+      - xmlstartlet
+      - meteo-qt
+      - ttf-weather-icons
+      - gnome-calculator
+    executable: paru
+    state: present

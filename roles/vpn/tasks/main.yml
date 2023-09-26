@@ -1,0 +1,9 @@
+- name: Install vpn packages
+  community.general.pacman:
+    name: 
+      - wireguard-tools
+      - openresolv
+      - wireguard-dkms
+      - networkmanager-openvpn
+    executable: paru
+    state: present

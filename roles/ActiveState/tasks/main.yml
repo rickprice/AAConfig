@@ -1,0 +1,6 @@
+- name: Install main packages
+  community.general.pacman:
+    name: 
+      - 1password
+    executable: paru
+    state: present

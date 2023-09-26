@@ -1,0 +1,13 @@
+- name: Install video packages
+  community.general.pacman:
+    name: 
+      # Video
+      - vlc
+      - flowblade
+      # OpenCL
+      - intel-opencl-sdk
+      - intel-compute-runtime
+      - dmidecode
+        clinfo
+    executable: paru
+    state: present

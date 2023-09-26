@@ -1,0 +1,13 @@
+- name: Install ssh packages 
+  community.general.pacman:
+    name: 
+      - x11-ssh-askpass
+      - openssh
+    executable: paru
+    state: present
+
+- name: Enable sshd service
+  ansible.builtin.systemd:
+    name: sshd
+    state: started
+    enabled: true

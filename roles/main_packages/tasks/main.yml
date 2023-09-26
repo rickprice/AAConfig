@@ -1,6 +1,7 @@
 - name: Install main packages
   community.general.pacman:
     name: 
+      - wezterm-git
       - git-delta-git
       - perl
       - perl-local-lib
@@ -12,5 +13,10 @@
       - xpub
       - github-cli
       - difftastic
+      - bat
+      - libreoffice-fresh
+      - calibre
+      - hub
+      - fd
     executable: paru
     state: present

@@ -1,0 +1,27 @@
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
+- name: Ensure 'keyd' group exists
+  ansible.builtin.group:
+    name: keyd
+    state: present
+
+- name: Add the user '{{ remote_regular_user }}' to the keyd group
+  ansible.builtin.user:
+    name: '{{ remote_regular_user }}'
+    groups: keyd
+    append: yes
+
+- name: Install keyd packages and setup
+  community.general.pacman:
+    name: 
+      - keyd
+    executable: paru
+    state: present
+
+- name: Enable keyd service
+  ansible.builtin.systemd:
+    name: keyd
+    state: started
+    enabled: true
