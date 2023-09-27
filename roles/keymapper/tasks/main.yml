@@ -20,7 +20,7 @@
     executable: paru
     state: present
 
-- name: Enable keyd service
+- name: Enable and start keyd service
   ansible.builtin.systemd:
     name: keyd
     state: started
