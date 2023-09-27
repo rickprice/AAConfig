@@ -1,7 +1,9 @@
-- name: Install main packages
-  community.general.pacman:
+---
+- name: Install timeshift packages
+  kewlfft.aur.aur:
     name: 
       - timeshift
       - timeshift-autosnap
-    executable: paru
     state: present
+  become: True
+  become_user: aur_builder
