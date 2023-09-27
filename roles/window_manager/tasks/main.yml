@@ -1,4 +1,4 @@
-- name: Install main packages
+- name: Install window manager packages
   community.general.pacman:
     name: 
       # I3 stuff in general
@@ -24,8 +24,8 @@
       - xfce4-power-manager
       - pamac-aur
       - network-manager-applet
-      - xmlstartlet
-      - meteo-qt
+      - xmlstarlet
+      - meteo-qt-git
       - ttf-weather-icons
       - gnome-calculator
     executable: paru

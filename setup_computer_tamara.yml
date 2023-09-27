@@ -4,7 +4,5 @@
   become: true
   user: name=aur_builder
   roles:
-    - initial_setup
-    - main_packages
-    - bluetooth
-    - final_setup
+    - brother_printer
+    - dropbox

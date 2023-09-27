@@ -2,11 +2,12 @@
   community.general.pacman:
     name: 
       - xorg-xfontsel
-      - nerd-fonts-complete
       - ttf-iosevka
+      - ttf-iosevka-nerd
       - noto-fonts
       - noto-fonts-emoji
       - noto-fonts-extra
+      - ttf-noto-nerd
       - ttf-linux-libertine
       - powerline-fonts
       - adobe-source-code-pro-fonts

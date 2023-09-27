@@ -5,7 +5,7 @@
 
 - name: Install shell packages
   community.general.pacman:
-    name: 
+    name:
       - fish
       - fisher-git
       - fzf-git
@@ -15,18 +15,19 @@
     state: present
 
 - name: Configure fzf
-      ansible.builtin.shell: |
-        fisher install PatrickF1/fzf.fish 
+  ansible.builtin.shell: |
+    fisher install "PatrickF1/fzf.fish"
+  args:
+    executable: /usr/bin/fish
 
 - name: Configure fisher-ssh-agent
-      ansible.builtin.shell: |
-        fisher install danhper/fish-ssh-agent 
+  ansible.builtin.shell: |
+    fisher install "danhper/fish-ssh-agent"
+  args:
+    executable: /usr/bin/fish
 
 - name: Configure HomeRepotTools
-      ansible.builtin.shell: |
-        fisher install rickprice/HomeRepotTools_fish 
-
-- name: Add Brother printer to installed printers
-      ansible.builtin.shell: |
-        lpadmin -p MFC-L2700DW -E -v "ipp://$PRINTER_IP/ipp/print" -m everywhere
-
+  ansible.builtin.shell: |
+    fisher install "rickprice/HomeRepotTools_fish"
+  args:
+    executable: /usr/bin/fish

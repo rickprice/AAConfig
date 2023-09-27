@@ -8,6 +8,6 @@
       - intel-opencl-sdk
       - intel-compute-runtime
       - dmidecode
-        clinfo
+      - clinfo
     executable: paru
     state: present
