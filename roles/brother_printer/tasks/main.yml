@@ -35,10 +35,9 @@
     state: present
 
 - name: Configure Brother printer
-      ansible.builtin.shell: |
-        brsaneconfig4 -a name=BROTHER model=MFC-L2700DW nodename=BRWD85DE244E1EB
+  ansible.builtin.shell: |
+    "brsaneconfig4 -a name=BROTHER model=MFC-L2700DW nodename=BRWD85DE244E1EB"
 
 - name: Add Brother printer to installed printers
-      ansible.builtin.shell: |
-        lpadmin -p MFC-L2700DW -E -v "ipp://$PRINTER_IP/ipp/print" -m everywhere
-
+  ansible.builtin.shell: |
+    "lpadmin -p MFC-L2700DW -E -v "ipp://$PRINTER_IP/ipp/print" -m everywhere"

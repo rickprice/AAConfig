@@ -5,9 +5,10 @@
   user: name=aur_builder
   roles:
     - ActiveState
+    - vpn
     - bit_utilities
     - brother_printer
-    - epson_printer
+    # - epson_printer
     - communications
     - database
     - docker
@@ -15,5 +16,4 @@
     - haskell
     - keymapper
     - lua
-    - photogaphic
-    - vpn
+    - photographic
