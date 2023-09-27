@@ -1,6 +1,7 @@
-- name: Install main packages
-  community.general.pacman:
+- name: Install 1Password
+  kewlfft.aur.aur:
     name: 
       - 1password
-    executable: paru
     state: present
+  become: yes
+  become_user: aur_builder

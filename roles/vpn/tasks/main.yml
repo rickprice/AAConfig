@@ -1,9 +1,11 @@
 - name: Install vpn packages
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
       - wireguard-tools
       - openresolv
       - wireguard-dkms
       - networkmanager-openvpn
-    executable: paru
     state: present
+  become: yes
+  become_user: aur_builder
+

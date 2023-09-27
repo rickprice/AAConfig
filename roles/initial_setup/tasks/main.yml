@@ -1,12 +1,19 @@
 ---
-- name: Update sudoers for aur_builder
-  lineinfile:
-      path: /etc/sudoers.d/aur_builder-allow-to-sudo-pacman
-      state: present
-      line: "aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman"
-      validate: /usr/sbin/visudo -cf %s
-      create: yes
+- name: Create the `aur_builder` user
+  become: yes
+  ansible.builtin.user:
+    name: aur_builder
+    create_home: yes
+    group: wheel
 
+- name: Allow the `aur_builder` user to run `sudo pacman` without a password
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/11-install-aur_builder
+    line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
+    create: yes
+    mode: 0644
+    validate: 'visudo -cf %s'
 - name: Update cache, the equivalent of "pacman -Sy"
   community.general.pacman:
     update_cache: true

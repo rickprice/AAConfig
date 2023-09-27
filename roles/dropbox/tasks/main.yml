@@ -1,13 +1,13 @@
+---
 - name: Install dropbox packages
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
       - dropbox
       - gt5-base
       - python-gpgme
-    executable: paru
     state: present
-
-
+  become: yes
+  become_user: aur_builder
 
 - name: From the Arch Wiki Prevent Automatic updates which always go wrong...
   ansible.builtin.shell: |

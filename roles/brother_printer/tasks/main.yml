@@ -18,26 +18,28 @@
     enabled: true
 
 - name: Install Brother packages
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
-      - brother-mfc-12710dw
+      - brother-mfc-l2710dw
       - brscan4
-    executable: paru
     state: present
+  become: yes
+  become_user: aur_builder
 
 - name: Install Simple Scan packages
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
       - simple-scan-git
       - gtk4
       - libadwaita
-    executable: paru
     state: present
+  become: yes
+  become_user: aur_builder
 
 - name: Configure Brother printer
   ansible.builtin.shell: |
-    "brsaneconfig4 -a name=BROTHER model=MFC-L2700DW nodename=BRWD85DE244E1EB"
+    /usr/bin/brsaneconfig4 -a name=BROTHER model=MFC-L2700DW nodename=BRWD85DE244E1EB
 
 - name: Add Brother printer to installed printers
   ansible.builtin.shell: |
-    "lpadmin -p MFC-L2700DW -E -v "ipp://$PRINTER_IP/ipp/print" -m everywhere"
+    lpadmin -p MFC-L2700DW -E -v "ipp://$PRINTER_IP/ipp/print" -m everywhere

@@ -1,7 +1,8 @@
 - name: Install bit utilities
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
-      - rclone
       - tixati
-    executable: paru
+      - rclone
     state: present
+  become: yes
+  become_user: aur_builder
