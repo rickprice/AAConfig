@@ -3,7 +3,7 @@
   kewlfft.aur.aur:
     name: 
       - dropbox
-      - gt5-base
+      - qt5-base
       - python-gpgme
     state: present
   become: yes

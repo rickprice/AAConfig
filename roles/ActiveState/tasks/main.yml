@@ -2,6 +2,8 @@
   kewlfft.aur.aur:
     name: 
       - 1password
+      # Fix state tool libxcrypt problems
+      - libxcrypt-compat
     state: present
   become: yes
   become_user: aur_builder

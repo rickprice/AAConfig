@@ -1,5 +1,6 @@
-- name: Install main packages
-  community.general.pacman:
+---
+- name: Install photography packages
+  kewlfft.aur.aur:
     name: 
       # Geolocating
       - perl-image-exiftool
@@ -28,5 +29,6 @@
       - libgsf
       - raw-thumbnailer
       - ufraw-thumbnailer
-    executable: paru
     state: present
+  become: True
+  become_user: aur_builder

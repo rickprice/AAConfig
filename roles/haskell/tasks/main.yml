@@ -1,8 +1,10 @@
+---
 - name: Install haskell packages
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
       - ghcup-hs-bin
       # Haskell source code formatter
-      - fourmolu
-    executable: paru
+      - haskell-fourmolu
     state: present
+  become: yes
+  become_user: aur_builder
