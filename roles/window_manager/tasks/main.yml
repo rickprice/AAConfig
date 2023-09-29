@@ -6,7 +6,7 @@
       - polkit-gnome
       - variety
       - picom
-      - xautolock
+      # - xautolock
       - i3-scrot
       - xorg-xkill
       - xorg-xwininfo
