@@ -7,6 +7,8 @@
       - gnome-disk-utility
       - gparted
       - util-linux
+      # THis is so you can connect a phone to the computer
+      - gvfs-mtp
     executable: paru
     state: present
 
