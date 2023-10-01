@@ -1,9 +1,12 @@
-- name: Install power packages and setup
-  community.general.pacman:
+---
+- name: Install power packages
+  kewlfft.aur.aur:
     name: 
       - acpi
-    executable: paru
+      - tlp
     state: present
+  become: true
+  become_user: aur_builder
 
 - name: Enable tlp service
   ansible.builtin.systemd:
