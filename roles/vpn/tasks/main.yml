@@ -1,3 +1,4 @@
+---
 - name: Install vpn packages
   kewlfft.aur.aur:
     name: 

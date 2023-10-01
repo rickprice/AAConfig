@@ -1,5 +1,6 @@
+---
 - name: Install video packages
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
       # Video
       - vlc
@@ -9,5 +10,7 @@
       - intel-compute-runtime
       - dmidecode
       - clinfo
-    executable: paru
     state: present
+  become: true
+  become_user: aur_builder
+
