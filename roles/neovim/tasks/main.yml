@@ -1,10 +1,12 @@
-- name: Install main packages
-  community.general.pacman:
+---
+- name: Install Neovim packages
+  kewlfft.aur.aur:
     name: 
       - neovim-nightly-bin
       - neovim-symlinks
       - xclip
       - nodejs
       - npm
-    executable: paru
     state: present
+  become: true
+  become_user: aur_builder
