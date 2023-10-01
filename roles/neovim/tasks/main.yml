@@ -1,4 +1,10 @@
 ---
+- name: Remove vim because of conflicts with Neovim-symlinks
+  community.general.pacman:
+    name: 
+      - vim
+    state: absent
+
 - name: Install Neovim packages
   kewlfft.aur.aur:
     name: 
