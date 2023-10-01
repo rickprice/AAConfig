@@ -1,18 +1,20 @@
+---
 - name: get the non root remote user
   set_fact:
     remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
     brother_nodename: "BRWD85DE244E1EB"
 
 - name: Install shell packages
-  community.general.pacman:
-    name:
+  kewlfft.aur.aur:
+    name: 
       - fish
       - fisher-git
       - fzf-git
       - zoxide-git
       - starship
-    executable: paru
     state: present
+  become: true
+  become_user: aur_builder
 
 - name: Configure fzf
   ansible.builtin.shell: |
