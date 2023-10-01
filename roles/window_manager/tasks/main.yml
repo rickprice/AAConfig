@@ -1,5 +1,6 @@
+---
 - name: Install window manager packages
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
       # I3 stuff in general
       - i3exit
@@ -28,5 +29,6 @@
       - meteo-qt-git
       - ttf-weather-icons
       - gnome-calculator
-    executable: paru
     state: present
+  become: true
+  become_user: aur_builder
