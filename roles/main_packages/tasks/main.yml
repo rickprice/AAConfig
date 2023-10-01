@@ -1,4 +1,10 @@
 ---
+- name: Remove xautolock because it causes annoying locking
+  community.general.pacman:
+    name: 
+      - xautolock
+    state: absent
+
 - name: Install main packages
   kewlfft.aur.aur:
     name: 
@@ -19,6 +25,7 @@
       - calibre
       - hub
       - fd
+      - dotter-rs-git
     state: present
   become: yes
   become_user: aur_builder
