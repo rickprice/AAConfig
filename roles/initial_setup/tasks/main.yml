@@ -19,7 +19,9 @@
     update_cache: true
 
 - name: Install paru
-  community.general.pacman:
-    name: paru
+  kewlfft.aur.aur:
+    name: 
+      - paru
     state: present
-
+  become: yes
+  become_user: aur_builder
