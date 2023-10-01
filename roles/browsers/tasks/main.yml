@@ -1,8 +1,11 @@
+---
 - name: Install browser packages
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
       - google-chrome
       - firefox-developer-edition
       - nyxt
-    executable: paru
     state: present
+  become: yes
+  become_user: aur_builder
+
