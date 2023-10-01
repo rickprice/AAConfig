@@ -1,5 +1,5 @@
 - name: Install audio packages
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
       - pa-applet-git 
       - pavucontrol
@@ -10,5 +10,6 @@
       - pipewire-alsa 
       - wireplumber 
       - qpwgraph
-    executable: paru
     state: present
+  become: true
+  become_user: aur_builder
