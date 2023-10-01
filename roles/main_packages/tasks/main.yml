@@ -1,5 +1,6 @@
+---
 - name: Install main packages
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
       - wezterm-git
       - git-delta-git
@@ -18,5 +19,6 @@
       - calibre
       - hub
       - fd
-    executable: paru
     state: present
+  become: yes
+  become_user: aur_builder
