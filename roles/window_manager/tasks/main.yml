@@ -6,6 +6,7 @@
       - i3exit
       - polkit-gnome
       - variety
+      - nitrogen
       - picom
       # - xautolock
       - i3-scrot
