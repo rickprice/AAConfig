@@ -8,7 +8,7 @@
   community.general.pacman:
     name: 
       - discord_arch_electron
-      - slack-desktop
+      - slack-electron
       - zoom
     executable: paru
     state: present
