@@ -2,14 +2,14 @@
   community.general.pacman:
     name: 
       - discord
-      - slack-desktop
+      - slack-electron
     state: absent
 
 - name: Install communication packages
   kewlfft.aur.aur:
     name: 
       - discord_arch_electron
-      - slack-electron
+      - slack-desktop
       - zoom
     state: present
   become: yes
