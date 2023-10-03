@@ -1,7 +1,13 @@
-- name: Install communications packages
+- name: Remove discord because we are now using the native Arch one
   community.general.pacman:
     name: 
       - discord
+    state: absent
+
+- name: Install communications packages
+  community.general.pacman:
+    name: 
+      - discord_arch_electron
       - slack-desktop
       - zoom
     executable: paru
