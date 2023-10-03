@@ -9,6 +9,7 @@
   kewlfft.aur.aur:
     name: 
       - wezterm-git
+      - alacritty
       - git-delta-git
       - perl
       - perl-local-lib
