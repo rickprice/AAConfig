@@ -5,7 +5,7 @@
       # Fix state tool libxcrypt problems
       - libxcrypt-compat
       - python-isort
-      - python2
+      - python2-bin
     state: present
   become: yes
   become_user: aur_builder
