@@ -4,6 +4,9 @@
     name: 
       - acpi
       - tlp
+      # Depndencies for tlp
+      - ethtool
+      - smartmontools
     state: present
   become: true
   become_user: aur_builder
