@@ -2,7 +2,6 @@
 - name: get the non root remote user
   set_fact:
     remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
-    brother_nodename: "BRWD85DE244E1EB"
 
 - name: Install shell packages
   kewlfft.aur.aur:
@@ -33,3 +32,12 @@
     fisher install "rickprice/HomeRepotTools_fish"
   args:
     executable: /usr/bin/fish
+
+#
+# - name: Set PATH for Bash environment variable
+# - lineinfile:
+#     regexp: '^(export PATH=.*)$'
+#     backrefs: yes
+#     line: '\1:/home/{{ remote_regular_user}}/.local/bin'
+#     path: '/{{ remote_regular_user }}/.bashrc'
+#
