@@ -1,7 +1,8 @@
-- name: Remove discord because we are now using the native Arch one
+- name: Remove packages because we are now using the native Arch ones
   community.general.pacman:
     name: 
       - discord
+      - slack-desktop
     state: absent
 
 - name: Install communication packages
