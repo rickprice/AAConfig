@@ -4,11 +4,12 @@
       - discord
     state: absent
 
-- name: Install communications packages
-  community.general.pacman:
+- name: Install communication packages
+  kewlfft.aur.aur:
     name: 
       - discord_arch_electron
       - slack-electron
       - zoom
-    executable: paru
     state: present
+  become: yes
+  become_user: aur_builder
