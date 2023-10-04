@@ -20,6 +20,8 @@
       - xorg-fonts-misc
       # Toaster notifications
       - wired
+      # stuff to make a desktop work
+      - trayer-srg
       - feh
       - gnome-system-monitor
       - dmenu-frecency-git
@@ -28,7 +30,7 @@
       - pamac-aur
       - network-manager-applet
       - xmlstarlet
-      - meteo-qt-git
+      - meteo-qt
       - ttf-weather-icons
       - gnome-calculator
     state: present
