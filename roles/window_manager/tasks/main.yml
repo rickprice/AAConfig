@@ -15,6 +15,7 @@
       # XMonad
       - xmonad
       - xmonad-contrib
+      - xmobar
       - stack
       - xorg-fonts-misc
       # Toaster notifications
