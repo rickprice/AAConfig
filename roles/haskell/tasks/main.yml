@@ -5,9 +5,8 @@
       - ghcup-hs-bin
       # Haskell source code formatter
       - haskell-fourmolu
-      # Needed for HLS in Neovim
-      - ghcide
-      - haskell-language-server
+      # Haskell language server
+      # - haskell-language-server-static
     state: present
   become: yes
   become_user: aur_builder
