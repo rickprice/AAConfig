@@ -1,0 +1,6 @@
+---
+- name: Upgrade all packages
+  ansible.builtin.shell:
+    cmd: paru -Syu --devel --noconfirm
+  become: yes
+  become_user: aur_builder
