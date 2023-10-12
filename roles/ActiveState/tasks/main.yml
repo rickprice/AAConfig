@@ -8,6 +8,8 @@
       - python2-bin
       # Needed for testing Django
       - enchant
+    # For handling CVE fixups
+      - gitkraken
     state: present
   become: yes
   become_user: aur_builder
