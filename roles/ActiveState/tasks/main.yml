@@ -8,6 +8,8 @@
       # Testing things
       - python2
       - python-tox
+      - pyenv
+      - python-virtualenv
       # Needed for testing Django
       - enchant
     # For handling CVE fixups
