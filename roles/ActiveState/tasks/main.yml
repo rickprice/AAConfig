@@ -5,7 +5,7 @@
       # Fix state tool libxcrypt problems
       - libxcrypt-compat
       - python-isort
-      - python2-bin
+      - python2
       # Needed for testing Django
       - enchant
     # For handling CVE fixups
