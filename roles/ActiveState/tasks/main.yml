@@ -5,7 +5,9 @@
       # Fix state tool libxcrypt problems
       - libxcrypt-compat
       - python-isort
+      # Testing things
       - python2
+      - python-tox
       # Needed for testing Django
       - enchant
     # For handling CVE fixups
