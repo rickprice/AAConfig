@@ -13,3 +13,14 @@
   ansible.builtin.shell: |
     rm -rf ~/.dropbox-dist &&
     install -dm0 ~/.dropbox-dist
+
+# - name: Enable dropbox for user service
+#   ansible.builtin.systemd:
+#     name: dropbox@fprice
+#     enabled: true
+
+# - name: Enable user service
+#   ansible.builtin.systemd:
+#     name: User
+#     state: started
+#     enabled: true
