@@ -27,6 +27,19 @@
       - hub
       - fd
       - dotter-rs
+      - reflector
     state: present
   become: yes
   become_user: aur_builder
+
+- name: Run reflector service
+  ansible.builtin.systemd:
+    name: reflector
+    state: started
+    # enabled: true
+
+- name: Enable reflector.timer service
+  ansible.builtin.systemd:
+    name: reflector.timer
+    state: started
+    enabled: true
