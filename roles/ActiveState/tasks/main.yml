@@ -6,10 +6,11 @@
       - libxcrypt-compat
       - python-isort
       # Testing things
-      - python2
-      - python-tox
-      - pyenv
-      - python-virtualenv
+      - python-pipx
+      # - python-tox
+      # - pyenv
+      # - pyenv-virtualenv
+      # - python-virtualenv
       # Needed for testing Django
       - enchant
     # For handling CVE fixups
