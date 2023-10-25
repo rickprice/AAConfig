@@ -23,9 +23,10 @@ Extra packages: git ansible ansible-core lazygit network-manager-applet
 ### Log in using xfce window manager
 ### > git clone https://github.com/rickprice/dotfiles .dotfiles
 ### > git clone https://github.com/rickprice/AAConfig
+
 ## Setup computer using Ansible
 > ansible-galaxy collection install -r requirements.yml
-> ansible-playbook --ask-become-pass --connection=local setup_computer.yml
+> ansible-playbook --ask-become-pass --connection=local setup_computer_basic.yml
 
 ## Setup computer using dotter
 ### Checkout the correct branch for the computer being setup_computer
