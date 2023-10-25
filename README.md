@@ -1,8 +1,36 @@
-# AnsibleArchConfiguration
-My machine configuration, using Ansible
+# Setup Arch Linux machine using Arch Installer
 
-First install the ansible-core and ansible packages
+## Initial configuration of installer 
 
-sudo pacman --noconfirm -S ansible ansible-core
+> # iwctl
+> \[iwd\] device list
+> \[iwd\] station wlan0 scan
+> \[iwd\] station wlan0 connect GALILEE
+> password: KashmirRemy
+> \[iwd\] station wlan0 show
+> \[iwd\] exit
+> # ping archlinux.org
+> # timedatectl
+> # archinstall
 
-ansible-playbook --ask-become-pass --connection=local setup_computer.yml
+## Installation using Archinstall
+Use xfce window manager (use full desktop option); use network-manager to manage network
+Extra packages: git ansible ansible-core lazygit network-manager-applet
+
+## Reboot
+
+## Setup configuration
+### Log in using xfce window manager
+### > git clone https://github.com/rickprice/dotfiles .dotfiles
+### > git clone https://github.com/rickprice/AAConfig
+## Setup computer using Ansible
+> ansible-galaxy collection install -r requirements.yml
+> ansible-playbook --ask-become-pass --connection=local setup_computer.yml
+
+## Setup computer using dotter
+### Checkout the correct branch for the computer being setup_computer
+### Run dotter
+### in XMonad configuration directory
+> git submodule init
+> git submodule update --remote
+> xmonad --recompile
