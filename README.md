@@ -31,7 +31,9 @@ Extra packages: git ansible ansible-core lazygit network-manager-applet
 ## Setup computer using dotter
 ### Checkout the correct branch for the computer being setup_computer
 ### Run dotter
+> dotter --force
 ### in XMonad configuration directory
 > git submodule init
+> git submodule update
 > git submodule update --remote
 > xmonad --recompile
