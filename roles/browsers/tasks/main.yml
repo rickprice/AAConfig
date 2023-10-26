@@ -4,7 +4,7 @@
     name: 
       - google-chrome
       - firefox-developer-edition
-      # - firefox
+      - firefox
       - nyxt
     state: present
   become: yes
