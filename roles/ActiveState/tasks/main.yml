@@ -15,6 +15,11 @@
       - enchant
     # For handling CVE fixups
       - gitkraken
+    # For current_BE_sprint command
+      - python-typer
+      - python-click-log
+      - python-atlassian-api
+      # - pipman-git
     state: present
   become: yes
   become_user: aur_builder
