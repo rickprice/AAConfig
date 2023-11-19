@@ -23,6 +23,11 @@
     # Python's for testing
       - python2
       - python36
+    # For PR stuff
+      - kubectl
+      - k9s
+    # For doing XML stuff
+      - xmllib
     state: present
   become: yes
   become_user: aur_builder
