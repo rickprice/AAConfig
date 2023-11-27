@@ -1,19 +1,18 @@
 ---
-- name: Remove vim because of conflicts with Neovim-symlinks
-  community.general.pacman:
-    name: 
-      - vim
-    state: absent
-
+# - name: Remove vim because of conflicts with Neovim-symlinks
+#   community.general.pacman:
+#     name: 
+#       - vim
+#     state: absent
+#
 - name: Install Neovim packages
-  kewlfft.aur.aur:
+  package:
     name: 
-      - neovim-nightly-bin
-      - neovim-symlinks
+      - neovim
+      # - neovim-symlinks
       - xclip
-      - nodejs
-      - npm
-      - python-lsp-server
+      # - nodejs
+      # - npm
+      # - python-lsp-server
     state: present
   become: true
-  become_user: aur_builder

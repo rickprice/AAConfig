@@ -11,7 +11,7 @@
     # - browsers
     # - filesystems
     # - fonts
-    # - neovim
+    - neovim
     # - power
     # - shell
     - ssh
