@@ -28,3 +28,4 @@
 - name: Install Dotter
   community.general.cargo:
     name: dotter
+    path: /usr/local
