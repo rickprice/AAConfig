@@ -24,3 +24,19 @@
       - gnome-calculator
     state: present
   become: true
+
+- name: Create external_repo directory
+  ansible.builtin.shell: |
+    mkdir -p ~/Documents/external_repo
+
+- name: Clone wired-notify
+  ansible.builtin.shell: |
+    gh repo clone Toqozz/wired-notify
+  chdir: ~/Documents/external_repo
+
+- name: Install wired-notify
+  ansible.builtin.shell: |
+    chmod a+x installer.sh
+    ./installer.sh
+  chdir: ~/Documents/external_repo/wired-notify
+  become: true
