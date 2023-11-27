@@ -3,7 +3,6 @@
     name: Setup SSH
       - x11-ssh-askpass
       - openssh-server
-    become: yes
     state: present
 
 - name: Enable sshd service
