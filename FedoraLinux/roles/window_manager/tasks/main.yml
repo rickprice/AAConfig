@@ -24,7 +24,7 @@
   become: true
 
 - name: Create external_repo directory
-  ansible.builtin.file: |
+  ansible.builtin.file:
     path: ~/Documents/external_repo
     state: directory
 
