@@ -29,4 +29,5 @@
   community.general.cargo:
     name: dotter
     path: /usr/local
+    state: latest
   become: true
