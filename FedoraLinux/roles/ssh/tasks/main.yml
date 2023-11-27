@@ -1,7 +1,7 @@
 - name: Install ssh packages 
   package: 
     name: 
-      # - x11-ssh-askpass
+      - x11-ssh-askpass
       - openssh-server
     state: present
 
