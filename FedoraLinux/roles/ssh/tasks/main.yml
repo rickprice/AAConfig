@@ -1,9 +1,9 @@
 - name: Install ssh packages 
-  community.general.pacman:
-    name: 
+  package: 
+    name: Setup SSH
       - x11-ssh-askpass
-      - openssh
-    executable: paru
+      - openssh-server
+    become: yes
     state: present
 
 - name: Enable sshd service
