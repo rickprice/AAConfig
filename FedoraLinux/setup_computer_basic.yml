@@ -15,6 +15,5 @@
     # - power
     - shell
     - ssh
-    # - window_manager
-    # - timeshift
+    - window_manager
     # - final_setup

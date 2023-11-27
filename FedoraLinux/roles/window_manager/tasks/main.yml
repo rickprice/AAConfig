@@ -1,6 +1,6 @@
 ---
 - name: Install window manager packages
-  kewlfft.aur.aur:
+  package:
     name: 
       # I3 stuff in general
       - i3exit
@@ -35,4 +35,3 @@
       - gnome-calculator
     state: present
   become: true
-  become_user: aur_builder
