@@ -10,7 +10,7 @@
       # - perl-archive-zip
       # - cpanminus
       - lazygit
-      # - xorg-xinput
+      - xinput
       - solaar
       # - xpub
       - gh
