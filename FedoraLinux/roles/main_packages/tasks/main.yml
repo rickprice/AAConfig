@@ -25,6 +25,13 @@
     state: present
   become: true
 
+- name: Remove Dotter
+  community.general.cargo:
+    name: dotter
+    path: /usr/local
+    state: absent
+  become: true
+
 - name: Install Dotter
   community.general.cargo:
     name: dotter
