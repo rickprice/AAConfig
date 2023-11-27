@@ -1,0 +1,12 @@
+---
+- name: Install vpn packages
+  kewlfft.aur.aur:
+    name: 
+      - wireguard-tools
+      - openresolv
+      - wireguard-dkms
+      - networkmanager-openvpn
+    state: present
+  become: true
+  become_user: aur_builder
+

@@ -1,0 +1,16 @@
+- name: Remove packages because we are now using the native Arch ones
+  community.general.pacman:
+    name: 
+      - discord
+      - slack-electron
+    state: absent
+
+- name: Install communication packages
+  kewlfft.aur.aur:
+    name: 
+      - discord_arch_electron
+      - slack-desktop
+      - zoom
+    state: present
+  become: true
+  become_user: aur_builder

@@ -1,0 +1,21 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  become: true
+  user: name=aur_builder
+  roles:
+    - initial_setup
+    - main_packages
+    - audio
+    - video
+    - bluetooth
+    - browsers
+    - filesystems
+    - fonts
+    - neovim
+    - power
+    - shell
+    - ssh
+    - window_manager
+    - timeshift
+    - final_setup

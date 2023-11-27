@@ -1,0 +1,9 @@
+---
+- name: Final Setup - Full system upgrade
+  community.general.pacman:
+    update_cache: true
+    upgrade: true
+
+- name: Tell Paru about development databases
+  ansible.builtin.shell: |
+    paru --gendb

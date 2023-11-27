@@ -1,0 +1,51 @@
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+    printer_ip: 192.168.50.253
+
+- name: Add the user '{{ remote_regular_user }}' to the lp group
+  ansible.builtin.user:
+    name: '{{ remote_regular_user }}'
+    groups: lp
+    append: yes
+
+- name: Install cups packages and setup
+  community.general.pacman:
+    name: 
+      - cups
+      - system-config-printer
+    executable: paru
+    state: present
+
+- name: Enable cups service
+  ansible.builtin.systemd:
+    name: cups
+    state: started
+    enabled: true
+
+- name: Install Brother packages
+  kewlfft.aur.aur:
+    name: 
+      - brother-mfc-l2710dw
+      - brscan4
+    state: present
+  become: true
+  become_user: aur_builder
+
+- name: Install Simple Scan packages
+  kewlfft.aur.aur:
+    name: 
+      - simple-scan-git
+      - gtk4
+      - libadwaita
+    state: present
+  become: true
+  become_user: aur_builder
+
+- name: Configure Brother printer
+  ansible.builtin.shell: |
+    /usr/bin/brsaneconfig4 -a name=BROTHER model=MFC-L2700DW ip="{{ printer_ip }}"
+
+- name: Add Brother printer to installed printers
+  ansible.builtin.shell: |
+    lpadmin -p MFC-L2700DW -E -v "ipp://{{ printer_ip }}/ipp/print" -m everywhere

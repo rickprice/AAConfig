@@ -1,0 +1,34 @@
+---
+- name: Install photography packages
+  kewlfft.aur.aur:
+    name: 
+      # Geolocating
+      - perl-image-exiftool
+      - gpsbabel
+      - python-ijson
+      # Photograpic processing
+      - darktable-git
+      - gimp
+      - nomacs
+      - imagemagick
+      - openexr
+      - dcraw
+      - gnuplot
+      - hugin
+      - gphoto2
+    # Collages
+      - photocollage
+    # Drawing
+      - inkscape
+    # File Manager Stuff
+      - pcmanfm
+      - tumbler
+      - poppler-glib
+      - ffmpegthumbnailer
+      - freetype2
+      - libgsf
+      - raw-thumbnailer
+      - ufraw-thumbnailer
+    state: present
+  become: True
+  become_user: aur_builder

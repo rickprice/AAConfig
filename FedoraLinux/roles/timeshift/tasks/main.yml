@@ -1,0 +1,9 @@
+---
+- name: Install timeshift packages
+  kewlfft.aur.aur:
+    name: 
+      - timeshift
+      - timeshift-autosnap
+    state: present
+  become: True
+  become_user: aur_builder

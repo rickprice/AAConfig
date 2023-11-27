@@ -1,0 +1,43 @@
+---
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
+- name: Install shell packages
+  kewlfft.aur.aur:
+    name: 
+      - fish
+      - fisher-git
+      - fzf-git
+      - zoxide-git
+      - starship
+    state: present
+  become: true
+  become_user: aur_builder
+
+- name: Configure fzf
+  ansible.builtin.shell: |
+    fisher install "PatrickF1/fzf.fish"
+  args:
+    executable: /usr/bin/fish
+
+- name: Configure fisher-ssh-agent
+  ansible.builtin.shell: |
+    fisher install "danhper/fish-ssh-agent"
+  args:
+    executable: /usr/bin/fish
+
+- name: Configure HomeRepotTools
+  ansible.builtin.shell: |
+    fisher install "rickprice/HomeRepotTools_fish"
+  args:
+    executable: /usr/bin/fish
+
+#
+# - name: Set PATH for Bash environment variable
+# - lineinfile:
+#     regexp: '^(export PATH=.*)$'
+#     backrefs: yes
+#     line: '\1:/home/{{ remote_regular_user}}/.local/bin'
+#     path: '/{{ remote_regular_user }}/.bashrc'
+#

@@ -1,0 +1,38 @@
+---
+- name: Install window manager packages
+  kewlfft.aur.aur:
+    name: 
+      # I3 stuff in general
+      - i3exit
+      - polkit-gnome
+      - variety
+      - nitrogen
+      - picom
+      # - xautolock
+      - i3-scrot
+      - xorg-xkill
+      - xorg-xwininfo
+      # XMonad
+      - xmonad
+      - xmonad-contrib
+      - xmobar
+      - stack
+      - xorg-fonts-misc
+      # Toaster notifications
+      - wired
+      # stuff to make a desktop work
+      - trayer-srg
+      - feh
+      - gnome-system-monitor
+      - dmenu-frecency-git
+      - volumeicon
+      - xfce4-power-manager
+      - pamac-aur
+      - network-manager-applet
+      - xmlstarlet
+      - meteo-qt
+      - ttf-weather-icons
+      - gnome-calculator
+    state: present
+  become: true
+  become_user: aur_builder

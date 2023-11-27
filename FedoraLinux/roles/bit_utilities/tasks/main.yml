@@ -1,0 +1,8 @@
+- name: Install bit utilities
+  kewlfft.aur.aur:
+    name: 
+      - tixati
+      - rclone
+    state: present
+  become: yes
+  become_user: aur_builder
