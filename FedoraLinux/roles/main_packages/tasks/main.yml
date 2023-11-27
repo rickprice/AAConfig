@@ -20,6 +20,7 @@
       - calibre
       - hub
       - fd
-      - dotter-rs
+      # - dotter-rs
+      - rust
     state: present
   become: true
