@@ -8,8 +8,6 @@
       - xmobar
       - stack
       - xorg-x11-fonts-misc
-      # Toaster notifications
-      # - wired
       # stuff to make a desktop work
       # - trayer-srg
       - feh
@@ -19,7 +17,7 @@
       - xfce4-power-manager
       - network-manager-applet
       - xmlstarlet
-      # - meteo-qt
+      - meteo
       # - ttf-weather-icons
       - gnome-calculator
     state: present
@@ -41,4 +39,24 @@
       chmod a+x installer.sh
       ./installer.sh
     chdir: ~/Documents/external_repo/wired-notify
+  become: true
+
+- name: Clone Trayer-srg
+  ansible.builtin.shell:
+    cmd: |
+      git clone https://github.com/sargon/trayer-srg.git
+    chdir: ~/Documents/external_repo
+
+- name: Build Trayer-srg
+  ansible.builtin.shell:
+    cmd: |
+      ./configure
+      make
+    chdir: ~/Documents/external_repo/trayer-srg
+
+- name: Install Trayer-srg
+  ansible.builtin.shell:
+    cmd: |
+      make install
+    chdir: ~/Documents/external_repo/trayer-srg
   become: true
