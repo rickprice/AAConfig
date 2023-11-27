@@ -9,7 +9,7 @@
       # - perl-local-lib
       # - perl-archive-zip
       # - cpanminus
-      - lazygit
+      # - lazygit
       - xorg-xinput
       # - solaar
       # - xpub
