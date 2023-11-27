@@ -24,9 +24,9 @@
   become: true
 
 - name: Create external_repo directory
-  ansible.builtin.shell: |
-    cmd: mkdir -p ~/Documents/external_repo
-    creates: ~/Documents/external_repo
+  ansible.builtin.file: |
+    path: ~/Documents/external_repo
+    state: directory
 
 - name: Clone wired-notify
   ansible.builtin.shell:
