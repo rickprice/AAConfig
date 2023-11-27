@@ -20,7 +20,6 @@
       - calibre
       - hub
       - fd-find
-      # - dotter-rs
       - rust
       - cargo
     state: present
@@ -28,4 +27,4 @@
 
 - name: Install Dotter
   community.general.cargo:
-    name: dotter-rs
+    name: dotter
