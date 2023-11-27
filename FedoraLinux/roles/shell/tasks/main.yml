@@ -4,12 +4,12 @@
     remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
 
 - name: Install shell packages
-  kewlfft.aur.aur:
+  package:
     name: 
       - fish
-      - fisher-git
+      - fisher
       - fzf-git
-      - zoxide-git
+      - zoxide
       - starship
     state: present
   become: true

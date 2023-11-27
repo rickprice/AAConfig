@@ -13,7 +13,7 @@
     # - fonts
     - neovim
     # - power
-    # - shell
+    - shell
     - ssh
     # - window_manager
     # - timeshift
