@@ -4,23 +4,23 @@
     name: 
       # XMonad
       - xmonad
-      - xmonad-contrib
+      # - xmonad-contrib
       - xmobar
       - stack
       - xorg-x11-fonts-misc
       # Toaster notifications
-      - wired
+      # - wired
       # stuff to make a desktop work
-      - trayer-srg
+      # - trayer-srg
       - feh
       - gnome-system-monitor
-      - dmenu-frecency-git
+      - bemenu
       - volumeicon
       - xfce4-power-manager
       - network-manager-applet
       - xmlstarlet
-      - meteo-qt
-      - ttf-weather-icons
+      # - meteo-qt
+      # - ttf-weather-icons
       - gnome-calculator
     state: present
   become: true
