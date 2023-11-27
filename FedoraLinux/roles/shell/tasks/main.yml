@@ -7,10 +7,10 @@
   package:
     name: 
       - fish
-      - fisher
-      - fzf-git
+      # - fisher
+      - fzf
       - zoxide
-      - starship
+      # - starship
     state: present
   become: true
 
