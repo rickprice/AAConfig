@@ -25,15 +25,15 @@
 
 - name: Create external_repo directory
   ansible.builtin.shell: |
-    mkdir -p ~/Documents/external_repo
-  creates: ~/Documents/external_repo
+    cmd: mkdir -p ~/Documents/external_repo
+    creates: ~/Documents/external_repo
 
 - name: Clone wired-notify
   ansible.builtin.shell:
     cmd: |
       git clone https://github.com/Toqozz/wired-notify.git
     chdir: ~/Documents/external_repo
-  creates: ~/Documents/external_repo/wired-notify
+    creates: ~/Documents/external_repo/wired-notify
 
 - name: Install wired-notify
   ansible.builtin.shell:
@@ -48,7 +48,7 @@
     cmd: |
       git clone https://github.com/sargon/trayer-srg.git
     chdir: ~/Documents/external_repo
-  creates: ~/Documents/external_repo/trayer-srg
+    creates: ~/Documents/external_repo/trayer-srg
 
 - name: Build Trayer-srg
   ansible.builtin.shell:
