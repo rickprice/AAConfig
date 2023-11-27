@@ -28,6 +28,7 @@
   ansible.builtin.file:
     path: ~/Documents/external_repo
     state: directory
+    mode: '0755'
 
 - name: Clone wired-notify
   ansible.builtin.shell:
