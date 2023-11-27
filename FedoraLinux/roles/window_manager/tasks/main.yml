@@ -2,22 +2,12 @@
 - name: Install window manager packages
   package:
     name: 
-      # I3 stuff in general
-      - i3exit
-      - polkit-gnome
-      - variety
-      - nitrogen
-      - picom
-      # - xautolock
-      - i3-scrot
-      - xorg-xkill
-      - xorg-xwininfo
       # XMonad
       - xmonad
       - xmonad-contrib
       - xmobar
       - stack
-      - xorg-fonts-misc
+      - xorg-x11-fonts-misc
       # Toaster notifications
       - wired
       # stuff to make a desktop work
@@ -27,7 +17,6 @@
       - dmenu-frecency-git
       - volumeicon
       - xfce4-power-manager
-      - pamac-aur
       - network-manager-applet
       - xmlstarlet
       - meteo-qt
