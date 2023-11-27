@@ -32,7 +32,7 @@
 - name: Clone wired-notify
   ansible.builtin.shell:
     cmd: |
-      gh repo clone Toqozz/wired-notify
+      git clone https://github.com/Toqozz/wired-notify.git
     chdir: ~/Documents/external_repo
 
 - name: Install wired-notify
