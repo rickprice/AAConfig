@@ -1,10 +1,10 @@
 ---
-# - name: Remove vim because of conflicts with Neovim-symlinks
-#   community.general.pacman:
-#     name: 
-#       - vim
-#     state: absent
-#
+- name: Remove vim because of conflicts with Neovim-symlinks
+  package:
+    name:
+      - vim
+    state: absent
+
 - name: Install Neovim packages
   package:
     name: 
