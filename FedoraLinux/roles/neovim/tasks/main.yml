@@ -8,8 +8,8 @@
 - name: Install Neovim packages
   package:
     name: 
-      - neovim
-      # - neovim-symlinks
+      # - neovim
+      - neovim-symlinks
       - xclip
       # - nodejs
       # - npm
