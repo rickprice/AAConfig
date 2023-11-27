@@ -24,3 +24,7 @@
       - rust
     state: present
   become: true
+
+- name: Install Dotter
+  community.general.cargo:
+    name: dotter-rs
