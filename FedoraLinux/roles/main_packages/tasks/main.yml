@@ -2,9 +2,9 @@
 - name: Install main packages
   package:
     name: 
-      - wezterm-git
+      - wezterm
       - alacritty
-      - git-delta-git
+      - git-delta
       # - perl
       # - perl-local-lib
       # - perl-archive-zip
