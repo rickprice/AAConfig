@@ -1,24 +1,18 @@
 ---
-- name: Remove xautolock because it causes annoying locking
-  community.general.pacman:
-    name: 
-      - xautolock
-    state: absent
-
 - name: Install main packages
-  kewlfft.aur.aur:
+  package:
     name: 
       - wezterm-git
       - alacritty
       - git-delta-git
-      - perl
-      - perl-local-lib
-      - perl-archive-zip
-      - cpanminus
+      # - perl
+      # - perl-local-lib
+      # - perl-archive-zip
+      # - cpanminus
       - lazygit
       - xorg-xinput
-      - solaar
-      - xpub
+      # - solaar
+      # - xpub
       - github-cli
       - difftastic
       - bat
@@ -27,19 +21,5 @@
       - hub
       - fd
       - dotter-rs
-      - reflector
     state: present
-  become: yes
-  become_user: aur_builder
-
-- name: Run reflector service
-  ansible.builtin.systemd:
-    name: reflector
-    state: started
-    # enabled: true
-
-- name: Enable reflector.timer service
-  ansible.builtin.systemd:
-    name: reflector.timer
-    state: started
-    enabled: true
+  become: true

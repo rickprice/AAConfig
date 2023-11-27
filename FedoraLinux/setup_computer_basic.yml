@@ -4,7 +4,7 @@
   become: true
   roles:
     - initial_setup
-    # - main_packages
+    - main_packages
     # - audio
     # - video
     # - bluetooth
