@@ -10,16 +10,16 @@
       # - perl-archive-zip
       # - cpanminus
       # - lazygit
-      - xorg-xinput
+      # - xorg-xinput
       # - solaar
       # - xpub
-      - github-cli
+      # - github-cli
       - difftastic
       - bat
       - libreoffice-fresh
       - calibre
       - hub
-      - fd
+      # - fd
       # - dotter-rs
       - rust
     state: present
