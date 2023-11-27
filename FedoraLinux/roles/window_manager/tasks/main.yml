@@ -9,7 +9,6 @@
       - stack
       - xorg-x11-fonts-misc
       # stuff to make a desktop work
-      # - trayer-srg
       - feh
       - gnome-system-monitor
       - bemenu
@@ -20,6 +19,8 @@
       - meteo
       # - ttf-weather-icons
       - gnome-calculator
+      # For Trayer-srg
+      - gdk-pixbuf2
     state: present
   become: true
 
