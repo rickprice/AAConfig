@@ -11,15 +11,15 @@
       # - cpanminus
       # - lazygit
       # - xorg-xinput
-      # - solaar
+      - solaar
       # - xpub
-      # - github-cli
+      - gh
       - difftastic
       - bat
       - libreoffice
       - calibre
       - hub
-      # - fd
+      - fd-find
       # - dotter-rs
       - rust
     state: present
