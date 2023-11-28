@@ -4,11 +4,11 @@
   become: true
   roles:
     # - ActiveState
-    - vpn
+    # - vpn
     # - bit_utilities
     # - brother_printer
     # - epson_printer
-    # - communications
+    - communications
     # - database
     # - docker
     # - dropbox
