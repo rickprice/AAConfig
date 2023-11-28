@@ -30,7 +30,7 @@
 
 - name: Create external_repo directory
   ansible.builtin.file:
-    path: /home/{remote_regular_user}/Documents/external_repo
+    path: /home/{{remote_regular_user}}/Documents/external_repo
     state: directory
     mode: '0755'
 
@@ -38,9 +38,9 @@
   ansible.builtin.shell:
     cmd: |
       git clone https://github.com/Toqozz/wired-notify.git
-    chdir: /home/{remote_regular_user}/Documents/external_repo
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo
 
-    creates: /home/{remote_regular_user}/Documents/external_repo/wired-notify
+    creates: /home/{{remote_regular_user}}/Documents/external_repo/wired-notify
 
 
 - name: Install wired-notify
@@ -48,15 +48,15 @@
     cmd: |
       chmod a+x installer.sh
       ./installer.sh
-    chdir: /home/{remote_regular_user}/Documents/external_repo/wired-notify
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo/wired-notify
   become: true
 
 - name: Clone Trayer-srg
   ansible.builtin.shell:
     cmd: |
       git clone https://github.com/sargon/trayer-srg.git
-    chdir: /home/{remote_regular_user}/Documents/external_repo
-    creates: /home/{remote_regular_user}/Documents/external_repo/trayer-srg
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo
+    creates: /home/{{remote_regular_user}}/Documents/external_repo/trayer-srg
 
 
 - name: Build Trayer-srg
@@ -64,12 +64,12 @@
     cmd: |
       ./configure
       make
-    chdir: /home/{remote_regular_user}/Documents/external_repo/trayer-srg
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo/trayer-srg
 
 
 - name: Install Trayer-srg
   ansible.builtin.shell:
     cmd: |
       make install
-    chdir: /home/{remote_regular_user}/Documents/external_repo/trayer-srg
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo/trayer-srg
   become: true
