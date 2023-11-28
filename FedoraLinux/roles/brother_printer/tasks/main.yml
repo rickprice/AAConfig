@@ -9,42 +9,14 @@
     groups: lp
     append: yes
 
-# - name: Install cups packages and setup
-#   community.general.pacman:
-#     name: 
-#       - cups
-#       - system-config-printer
-#     executable: paru
-#     state: present
-#
-# - name: Enable cups service
-#   ansible.builtin.systemd:
-#     name: cups
-#     state: started
-#     enabled: true
-
-# - name: Install Brother packages
-#   package:
-#     name: 
-#       - brother-mfc-l2710dw
-#       - brscan4
-#     state: present
-#   become: true
-
 - name: Install Simple Scan packages
   package:
     name: 
       - simple-scan
       - sane-airscan
-      # - gtk4
-      # - libadwaita
     state: present
   become: true
 
-# - name: Configure Brother printer
-#   ansible.builtin.shell: |
-#     /usr/bin/brsaneconfig4 -a name=BROTHER model=MFC-L2700DW ip="{{ printer_ip }}"
-#
-# - name: Add Brother printer to installed printers
-#   ansible.builtin.shell: |
-#     lpadmin -p MFC-L2700DW -E -v "ipp://{{ printer_ip }}/ipp/print" -m everywhere
+- name: Add Brother printer to installed printers
+  ansible.builtin.shell: |
+    lpadmin -p MFC-L2700DW -E -v "ipp://{{ printer_ip }}/ipp/print" -m everywhere
