@@ -27,7 +27,7 @@
 
 - name: Configure fzf
   ansible.builtin.shell: |
-    fisher install "PatrickF1/fzf.fish"
+    fisher add "PatrickF1/fzf.fish"
   args:
     executable: /usr/bin/fish
   become: true
@@ -35,7 +35,7 @@
 
 - name: Configure fisher-ssh-agent
   ansible.builtin.shell: |
-    fisher install "danhper/fish-ssh-agent"
+    fisher add "danhper/fish-ssh-agent"
   args:
     executable: /usr/bin/fish
   become: true
@@ -43,7 +43,7 @@
 
 - name: Configure HomeRepotTools
   ansible.builtin.shell: |
-    fisher install "rickprice/HomeRepotTools_fish"
+    fisher add "rickprice/HomeRepotTools_fish"
   args:
     executable: /usr/bin/fish
   become: true
