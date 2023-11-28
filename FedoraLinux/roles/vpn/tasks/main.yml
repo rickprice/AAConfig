@@ -5,6 +5,6 @@
       - wireguard-tools
       - openresolv
       - wireguard-dkms
-      - networkmanager-openvpn
+      - NetworkManager-openvpn
     state: present
   become: true
