@@ -29,6 +29,7 @@
       # Needed development tools for XMonad etc
       - '@Development tools'
       - '@c-development'
+      - gcc-c++
       - redhat-rpm-config
     state: present
   become: true
