@@ -3,8 +3,9 @@
   package:
     name: 
       # - xorg-xfontsel
-      - ttf-iosevka
-      - ttf-iosevka-nerd
+      - iosevka-fonts
+      - iosevka-term-fonts
+      # - ttf-iosevka-nerd
       # - noto-fonts
       # - noto-fonts-emoji
       # - noto-fonts-extra
