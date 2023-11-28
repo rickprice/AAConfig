@@ -7,7 +7,7 @@
     - main_packages
     # - audio
     # - video
-    # - bluetooth
+    - bluetooth
     # - browsers
     # - filesystems
     - fonts

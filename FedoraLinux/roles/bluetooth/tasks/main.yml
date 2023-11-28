@@ -14,13 +14,12 @@
     append: yes
 
 - name: Install bluetooth packages and setup
-  community.general.pacman:
+  package:
     name: 
       - bluez
       - bluez-utils
       - bluez-hid2hci
       - blueman
-    executable: paru
     state: present
 
 - name: Enable bluetooth service
