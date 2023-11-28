@@ -1,11 +1,6 @@
 - name: Install IM applications
-  package:
-    name: 
-      - discord
-    state: present
-
-- name: Install IM applications II
   snap:
     name: 
       - slack
+      - discord
     state: present
