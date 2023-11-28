@@ -16,4 +16,4 @@
     - shell
     - ssh
     - window_manager
-    # - final_setup
+    - final_setup
