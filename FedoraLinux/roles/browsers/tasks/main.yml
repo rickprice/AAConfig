@@ -5,6 +5,6 @@
       - google-chrome
       - firefox-nightly
       - firefox
-      - nyxt
+      # - nyxt
     state: present
   become: yes
