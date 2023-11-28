@@ -26,6 +26,8 @@
       # For Trayer-srg
       - gdk-pixbuf2-devel
       - gtk2-devel
+      # Needed development tools for XMonad etc
+      - '@Development tools'
     state: present
   become: true
 
