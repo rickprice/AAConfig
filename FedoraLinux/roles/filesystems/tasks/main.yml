@@ -1,19 +1,18 @@
 - name: Install filesystem packages
-  community.general.pacman:
+  package:
     name: 
       - ntfs-3g
       - ntfsprogs
       - dosfstools
-      - gnome-disk-utility
-      - gparted
+      # - gnome-disk-utility
+      # - gparted
       - util-linux
       # THis is so you can connect a phone to the computer
       - gvfs-mtp
-    executable: paru
     state: present
 
-- name: Enable SSD Trimming service
-  ansible.builtin.systemd:
-    name: fstrim.timer
-    state: started
-    enabled: true
+# - name: Enable SSD Trimming service
+#   ansible.builtin.systemd:
+#     name: fstrim.timer
+#     state: started
+#     enabled: true
