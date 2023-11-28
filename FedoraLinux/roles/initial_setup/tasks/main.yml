@@ -23,13 +23,43 @@
   community.general.copr:
     state: enabled
     name: the4runner/firefox-dev
-- name: Enable the RPM Fusion repository
-  dnf:
-    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+
+
+
+- name: System | Repositories | Add RPM Fusion free GPG key
+  tags: system,repository,rpmfusion
+  ansible.builtin.rpm_key:
+    key: "{{ rpmfusion_free_gpg_key }}"
     state: present
   when: ansible_distribution == 'Fedora'
-- name: Enable the RPM Fusion repository
-  dnf:
-    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
+
+- name: System | Repositories | Add RPM Fusion free
+  tags: system,repository,rpmfusion
+  ansible.builtin.dnf:
+    name: "{{ rpmfusion_free_repository }}"
     state: present
   when: ansible_distribution == 'Fedora'
+
+- name: System | Repositories | Add RPM Fusion non-free GPG key
+  tags: system,repository,rpmfusion
+  ansible.builtin.rpm_key:
+    key: "{{ rpmfusion_nonfree_gpg_key }}"
+  state: present
+  when: ansible_distribution == 'Fedora'
+
+- name: System | Repositories | Add RPM Fusion non-free
+  tags: system,repository,rpmfusion
+  ansible.builtin.dnf:
+    name: "{{ rpmfusion_nonfree_repository }}"
+    state: present
+  when: ansible_distribution == 'Fedora'
+# - name: Enable the RPM Fusion repository
+#   dnf:
+#     name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+#     state: present
+#   when: ansible_distribution == 'Fedora'
+# - name: Enable the RPM Fusion repository
+#   dnf:
+#     name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
+#     state: present
+#   when: ansible_distribution == 'Fedora'
