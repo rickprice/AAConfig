@@ -1,6 +1,6 @@
 ---
 - name: Install browser packages
-  kewlfft.aur.aur:
+  package:
     name: 
       - google-chrome
       - firefox-developer-edition
@@ -8,5 +8,3 @@
       - nyxt
     state: present
   become: yes
-  become_user: aur_builder
-
