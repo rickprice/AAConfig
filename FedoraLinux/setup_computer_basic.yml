@@ -10,7 +10,7 @@
     # - bluetooth
     # - browsers
     # - filesystems
-    # - fonts
+    - fonts
     - neovim
     # - power
     - shell
