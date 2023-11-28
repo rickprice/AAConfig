@@ -3,7 +3,7 @@
   package:
     name: 
       - google-chrome
-      - firefox-developer-edition
+      - firefox-dev
       - firefox
       # - nyxt
     state: present
