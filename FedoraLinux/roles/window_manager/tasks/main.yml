@@ -1,4 +1,8 @@
 ---
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
 - name: Install window manager packages
   package:
     name: 
@@ -26,7 +30,7 @@
 
 - name: Create external_repo directory
   ansible.builtin.file:
-    path: ~/Documents/external_repo
+    path: /home/{remote_regular_user}/Documents/external_repo
     state: directory
     mode: '0755'
 
@@ -34,34 +38,38 @@
   ansible.builtin.shell:
     cmd: |
       git clone https://github.com/Toqozz/wired-notify.git
-    chdir: ~/Documents/external_repo
-    creates: ~/Documents/external_repo/wired-notify
+    chdir: /home/{remote_regular_user}/Documents/external_repo
+
+    creates: /home/{remote_regular_user}/Documents/external_repo/wired-notify
+
 
 - name: Install wired-notify
   ansible.builtin.shell:
     cmd: |
       chmod a+x installer.sh
       ./installer.sh
-    chdir: ~/Documents/external_repo/wired-notify
+    chdir: /home/{remote_regular_user}/Documents/external_repo/wired-notify
   become: true
 
 - name: Clone Trayer-srg
   ansible.builtin.shell:
     cmd: |
       git clone https://github.com/sargon/trayer-srg.git
-    chdir: ~/Documents/external_repo
-    creates: ~/Documents/external_repo/trayer-srg
+    chdir: /home/{remote_regular_user}/Documents/external_repo
+    creates: /home/{remote_regular_user}/Documents/external_repo/trayer-srg
+
 
 - name: Build Trayer-srg
   ansible.builtin.shell:
     cmd: |
       ./configure
       make
-    chdir: ~/Documents/external_repo/trayer-srg
+    chdir: /home/{remote_regular_user}/Documents/external_repo/trayer-srg
+
 
 - name: Install Trayer-srg
   ansible.builtin.shell:
     cmd: |
       make install
-    chdir: ~/Documents/external_repo/trayer-srg
+    chdir: /home/{remote_regular_user}/Documents/external_repo/trayer-srg
   become: true
