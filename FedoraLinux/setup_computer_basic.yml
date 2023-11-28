@@ -3,6 +3,7 @@
   connection: local
   become: true
   roles:
+    - { role: ihmels.rpmfusion_repo }  
     - initial_setup
     - main_packages
     # - audio
