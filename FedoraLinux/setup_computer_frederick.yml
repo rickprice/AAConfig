@@ -6,7 +6,7 @@
     # - ActiveState
     - vpn
     # - bit_utilities
-    # - brother_printer
+    - brother_printer
     # - epson_printer
     - communications
     # - database
