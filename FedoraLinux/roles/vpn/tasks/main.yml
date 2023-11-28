@@ -4,7 +4,7 @@
     name: 
       - wireguard-tools
       - openresolv
-      - wireguard-dkms
+      # - wireguard-dkms
       - NetworkManager-openvpn
     state: present
   become: true
