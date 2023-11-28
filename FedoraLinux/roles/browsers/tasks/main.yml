@@ -1,15 +1,10 @@
 ---
-- name: Remove browser packages
-  package:
-    name: 
-      - firefox
-    state: absent
-  become: true
 - name: Install browser packages
   package:
     name: 
       - google-chrome
-      - firefox-nightly
+      - firefox-developer-edition
+      - firefox
       # - nyxt
     state: present
   become: true

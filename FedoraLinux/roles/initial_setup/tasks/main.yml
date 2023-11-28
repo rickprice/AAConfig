@@ -19,7 +19,7 @@
   community.general.copr:
     state: enabled
     name: peterwu/iosevka
-- name: Enable firefox on Copr
+- name: Enable firefox-developer-edition on Copr
   community.general.copr:
     state: enabled
-    name: proletarius101/firefox-nightly
+    name: the4runner/firefox-dev
