@@ -24,7 +24,8 @@
       # - ttf-weather-icons
       - gnome-calculator
       # For Trayer-srg
-      - gdk-pixbuf2
+      - gdk-pixbuf2-devel
+      - gtk2-devel
     state: present
   become: true
 
