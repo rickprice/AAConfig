@@ -1,2 +1,3 @@
 # collections:
-#   - name: kewlfft.aur
+# Roles
+- src: ihmels.rpmfusion_repo
