@@ -28,6 +28,7 @@
       - gtk2-devel
       # Needed development tools for XMonad etc
       - '@Development tools'
+      - '@c-development'
       - redhat-rpm-config
     state: present
   become: true
