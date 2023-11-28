@@ -2,15 +2,10 @@
   package:
     name: 
       - discord
-      # - slack-electron
-    state: absent
+    state: present
 
-# - name: Install communication packages
-#   kewlfft.aur.aur:
-#     name: 
-#       - discord_arch_electron
-#       - slack-desktop
-#       - zoom
-#     state: present
-#   become: true
-#   become_user: aur_builder
+- name: Install IM applications II
+  snap:
+    name: 
+      - slack
+    state: present
