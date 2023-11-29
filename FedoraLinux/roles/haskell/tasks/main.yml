@@ -4,7 +4,7 @@
     name: 
       # - ghcup-hs-bin
       # Haskell source code formatter
-      - haskell-fourmolu
+      # - haskell-fourmolu
       # Haskell language server
       # - haskell-language-server-static
     state: present

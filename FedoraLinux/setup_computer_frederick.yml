@@ -5,14 +5,14 @@
   roles:
     # - ActiveState
     - vpn
-    # - bit_utilities
+    - bit_utilities
     - brother_printer
     - epson_printer
     - communications
     # - database
     # - docker
     - dropbox
-    # - haskell
+    - haskell
     - keymapper
     # - lua
     - photographic
