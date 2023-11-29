@@ -59,6 +59,12 @@
     chdir: /home/{{remote_regular_user}}/Documents/external_repo/wired-notify
   become: true
 
+- name: Copy wired to /usr/local/bin
+  ansible.builtin.copy:
+    src: /home/{{remote_regular_user}}/Documents/external_repo/wired-notify/target/releases/wired
+    dest: /usr/local/bin/wired
+    remote_src: yes
+
 - name: Clone Trayer-srg
   ansible.builtin.git:
     repo: https://github.com/sargon/trayer-srg.git
