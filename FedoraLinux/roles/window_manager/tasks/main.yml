@@ -62,21 +62,12 @@
     repo: https://github.com/sargon/trayer-srg.git
     dest: /home/{{remote_regular_user}}/Documents/external_repo/trayer-srg
 
-- name: Clone Trayer-srg
-  ansible.builtin.shell:
-    cmd: |
-      git clone https://github.com/sargon/trayer-srg.git
-    chdir: /home/{{remote_regular_user}}/Documents/external_repo
-    creates: /home/{{remote_regular_user}}/Documents/external_repo/trayer-srg
-
-
 - name: Build Trayer-srg
   ansible.builtin.shell:
     cmd: |
       ./configure
       make
     chdir: /home/{{remote_regular_user}}/Documents/external_repo/trayer-srg
-
 
 - name: Install Trayer-srg
   ansible.builtin.shell:
