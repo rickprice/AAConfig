@@ -61,7 +61,7 @@
 
 - name: Copy wired to /usr/local/bin
   ansible.builtin.copy:
-    src: /home/{{remote_regular_user}}/Documents/external_repo/wired-notify/target/releases/wired
+    src: /home/{{remote_regular_user}}/Documents/external_repo/wired-notify/target/release/wired
     dest: /usr/local/bin/wired
     remote_src: yes
 
