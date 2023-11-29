@@ -3,7 +3,7 @@
   package:
     name: 
       # Geolocating
-      - exiftool
+      - perl-Image-ExifTool
       # - gpsbabel
       # - python-ijson
       # Photograpic processing
