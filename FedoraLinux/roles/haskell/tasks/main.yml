@@ -22,5 +22,5 @@
   ansible.builtin.shell:
     cmd: |
       cabal update
-      cabal install
+      cabal install --overwrite-policy=always
     chdir: /home/{{remote_regular_user}}/Documents/external_repo/fourmolu
