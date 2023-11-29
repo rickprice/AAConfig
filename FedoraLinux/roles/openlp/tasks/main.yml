@@ -2,4 +2,6 @@
   package:
     name: 
       - OpenLP
+      - vlc
+      - python3-vlc
     state: present
