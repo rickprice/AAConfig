@@ -1,13 +1,13 @@
 ---
 - name: Install photography packages
-  kewlfft.aur.aur:
+  package:
     name: 
       # Geolocating
       - perl-image-exiftool
-      - gpsbabel
-      - python-ijson
+      # - gpsbabel
+      # - python-ijson
       # Photograpic processing
-      - darktable-git
+      - darktable
       - gimp
       - nomacs
       - imagemagick
@@ -31,4 +31,3 @@
       - ufraw-thumbnailer
     state: present
   become: True
-  become_user: aur_builder
