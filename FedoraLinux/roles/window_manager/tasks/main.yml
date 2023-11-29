@@ -31,6 +31,8 @@
       - '@c-development'
       - gcc-c++
       - redhat-rpm-config
+      # Notify-send for destkop notifications
+      - libnotify
     state: present
   become: true
 
