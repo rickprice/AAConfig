@@ -1,14 +1,17 @@
 ---
-# - name: Install haskell packages
-#   package:
-#     name: 
-#       # - ghcup-hs-bin
-#       # Haskell source code formatter
-#       # - haskell-fourmolu
-#       # Haskell language server
-#       # - haskell-language-server-static
-#     state: present
-#   become: yes
+- name: Install haskell packages
+  package:
+    name:
+      # - ghcup-hs-bin
+      # Haskell source code formatter
+      # - haskell-fourmolu
+      # Haskell language server
+      # - haskell-language-server-static
+      - ghc
+      - cabal
+      - stack
+    state: present
+  become: yes
 
 - name: Clone Fourmolu
   ansible.builtin.git:
