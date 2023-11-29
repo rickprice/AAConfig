@@ -14,10 +14,9 @@
     append: yes
 
 - name: Install keyd packages and setup
-  community.general.pacman:
+  package:
     name: 
       - keyd
-    executable: paru
     state: present
 
 - name: Enable and start keyd service

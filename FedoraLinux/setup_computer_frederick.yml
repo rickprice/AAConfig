@@ -13,6 +13,6 @@
     # - docker
     - dropbox
     # - haskell
-    # - keymapper
+    - keymapper
     # - lua
     - photographic
