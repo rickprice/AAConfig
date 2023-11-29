@@ -7,11 +7,11 @@
     - vpn
     # - bit_utilities
     - brother_printer
-    # - epson_printer
+    - epson_printer
     - communications
     # - database
     # - docker
-    # - dropbox
+    - dropbox
     # - haskell
     # - keymapper
     # - lua
