@@ -1,12 +1,21 @@
 ---
 - name: Install haskell packages
-  kewlfft.aur.aur:
+  package:
     name: 
-      - ghcup-hs-bin
+      # - ghcup-hs-bin
       # Haskell source code formatter
       - haskell-fourmolu
       # Haskell language server
       # - haskell-language-server-static
     state: present
   become: yes
-  become_user: aur_builder
+
+- name: Clone Fourmolu
+  ansible.builtin.git:
+    repo: https://github.com/fourmolu/fourmolu.git
+    dest: /home/{{remote_regular_user}}/Documents/external_repo/fourmolu
+
+- name: Build and Install Fourmolu
+  ansible.builtin.shell:
+    cmd: cabal install
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo/fourmolu
