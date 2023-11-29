@@ -20,5 +20,7 @@
 
 - name: Build and Install Fourmolu
   ansible.builtin.shell:
-    cmd: cabal install
+    cmd: |
+      cabal update
+      cabal install
     chdir: /home/{{remote_regular_user}}/Documents/external_repo/fourmolu
