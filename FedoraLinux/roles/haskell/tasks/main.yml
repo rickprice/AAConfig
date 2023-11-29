@@ -8,7 +8,7 @@
       # Haskell language server
       # - haskell-language-server-static
       - ghc
-      - cabal
+      - cabal-install
       - stack
     state: present
   become: yes
