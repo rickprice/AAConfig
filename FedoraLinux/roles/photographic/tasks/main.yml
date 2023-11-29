@@ -3,7 +3,7 @@
   package:
     name: 
       # Geolocating
-      - perl-image-exiftool
+      - exiftool
       # - gpsbabel
       # - python-ijson
       # Photograpic processing
@@ -25,9 +25,9 @@
       - tumbler
       - poppler-glib
       - ffmpegthumbnailer
-      - freetype2
+      # - freetype2
       - libgsf
-      - raw-thumbnailer
-      - ufraw-thumbnailer
+      # - raw-thumbnailer
+      # - ufraw-thumbnailer
     state: present
   become: True
