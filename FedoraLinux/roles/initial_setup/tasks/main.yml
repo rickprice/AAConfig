@@ -39,3 +39,8 @@
     name: 
       - snapd
     state: present
+
+- name: Clone Dotfiles
+  ansible.builtin.git:
+    repo: https://github.com/rickprice/dotfiles.git
+    dest: /home/{{remote_regular_user}}/.dotfiles
