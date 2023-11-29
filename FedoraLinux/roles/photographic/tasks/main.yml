@@ -10,7 +10,7 @@
       - darktable
       - gimp
       - nomacs
-      - imagemagick
+      - ImageMagick
       - openexr
       - dcraw
       - gnuplot
