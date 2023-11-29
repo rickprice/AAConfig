@@ -1,0 +1,5 @@
+- name: Install OpenLP packages
+  package:
+    name: 
+      - OpenLP
+    state: present
