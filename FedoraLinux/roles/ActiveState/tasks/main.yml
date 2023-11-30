@@ -11,7 +11,7 @@
     #   - libxcrypt-compat
       - python-isort
       # Testing things
-      - python-pipx
+      # - python-pipx
     #   # - python-tox
       # - pyenv
       # - pyenv-virtualenv
@@ -23,15 +23,15 @@
     # # For current_BE_sprint command
       - python-typer
       - python-click-log
-      - python-atlassian-api
+      # - python-atlassian-api
       # - pipman-git
     # # Python's for testing
     #   - python2
     #   - python36
     # # For PR stuff
-      - kubectl
-      - k9s
+      # - kubectl
+      # - k9s
     # # For doing XML stuff
-      - xmllib
+      # - xmllib
     state: present
   become: true
