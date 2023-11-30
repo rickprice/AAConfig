@@ -10,7 +10,7 @@
     - epson_printer
     - communications
     # - database
-    # - docker
+    - docker
     - dropbox
     - haskell
     - keymapper

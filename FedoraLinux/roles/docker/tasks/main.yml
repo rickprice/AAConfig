@@ -14,10 +14,9 @@
     append: yes
 
 - name: Install bluetooth packages and setup
-  community.general.pacman:
+  package:
     name: 
       - docker
-    executable: paru
     state: present
 
 - name: Enable docker service
