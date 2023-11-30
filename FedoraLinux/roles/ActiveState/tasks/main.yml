@@ -4,6 +4,12 @@
       - 1password
     state: present
 
+
+To enable classic snap support, enter the following to create a symbolic link between /var/lib/snapd/snap and /snap: 
+
+
+
+
 - name: Install ActiveState required Snaps - kubectl
   snap:
     name: kubectl
