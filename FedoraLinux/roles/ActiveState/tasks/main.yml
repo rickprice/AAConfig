@@ -1,9 +1,8 @@
 - name: Install ActiveState required Snaps
   snap:
     name: 
-      - 1Password
+      - 1password
     state: present
-  become: true
 
 - name: Install ActiveState required packages
   package:
