@@ -1,8 +1,7 @@
 - name: Install database packages
-  community.general.pacman:
+  package:
     name: 
       - dbeaver
       - dbeaver-plugin-office
       - dbeaver-plugin-svg-format
-    executable: paru
     state: present
