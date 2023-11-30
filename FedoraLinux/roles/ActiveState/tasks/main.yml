@@ -2,6 +2,8 @@
   snap:
     name: 
       - 1password
+      - kubectl
+      - k9s
     state: present
 
 - name: Install ActiveState required packages
