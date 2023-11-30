@@ -9,7 +9,7 @@
     - brother_printer
     - epson_printer
     - communications
-    - database
+    # - database
     - docker
     - dropbox
     - haskell
