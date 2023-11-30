@@ -6,17 +6,13 @@
 
 - name: Install ActiveState required Snaps - kubectl
   snap:
-    name: 
-      - kubectl
+    name: kubectl
     classic: true
-    state: present
 
 - name: Install ActiveState required Snaps - k9s
   snap:
-    name: 
-      - k9s
+    name: k9s
     classic: true
-    state: present
 
 - name: Install ActiveState required packages
   package:
