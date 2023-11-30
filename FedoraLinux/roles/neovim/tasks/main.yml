@@ -10,6 +10,7 @@
     name: 
       - neovim
       - xclip
+      - nodejs-npm
       # - nodejs
       # - npm
       # - python-lsp-server
