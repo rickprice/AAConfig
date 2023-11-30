@@ -22,15 +22,32 @@
       - fd-find
       - rustc
       - cargo
+      - build-essential
+      - cmake
+      - libfreetype6-dev
+      - libfontconfig1-dev
+      - xclip
     state: present
   become: true
 
-- name: Remove Dotter
-  community.general.cargo:
-    name: dotter
-    path: /usr/local
-    state: absent
-  become: true
+# - name: Install Flatpack applications
+#   snap:
+#     name: 
+#       - wezterm
+#     state: present
+
+- name: Install Snap applications
+  snap:
+    name: 
+      - lazygit-gm
+    state: present
+
+# - name: Remove Dotter
+#   community.general.cargo:
+#     name: dotter
+#     path: /usr/local
+#     state: absent
+#   become: true
 
 - name: Install Dotter
   community.general.cargo:
