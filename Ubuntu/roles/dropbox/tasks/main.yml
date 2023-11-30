@@ -1,0 +1,8 @@
+---
+- name: Install dropbox packages
+  package:
+    name: 
+      - libgnome
+      - python3-gpg
+    state: present
+  become: yes

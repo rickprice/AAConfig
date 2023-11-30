@@ -1,0 +1,26 @@
+---
+- name: Install haskell packages
+  package:
+    name:
+      # - ghcup-hs-bin
+      # Haskell source code formatter
+      # - haskell-fourmolu
+      # Haskell language server
+      # - haskell-language-server-static
+      - ghc
+      - cabal-install
+      - stack
+    state: present
+  become: yes
+
+- name: Clone Fourmolu
+  ansible.builtin.git:
+    repo: https://github.com/fourmolu/fourmolu.git
+    dest: /home/{{remote_regular_user}}/Documents/external_repo/fourmolu
+
+- name: Build and Install Fourmolu
+  ansible.builtin.shell:
+    cmd: |
+      cabal update
+      cabal install --overwrite-policy=always
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo/fourmolu

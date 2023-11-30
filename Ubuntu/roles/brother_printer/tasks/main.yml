@@ -1,0 +1,22 @@
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+    printer_ip: 192.168.50.253
+
+- name: Add the user '{{ remote_regular_user }}' to the lp group
+  ansible.builtin.user:
+    name: '{{ remote_regular_user }}'
+    groups: lp
+    append: yes
+
+- name: Install Simple Scan packages
+  package:
+    name: 
+      - simple-scan
+      - sane-airscan
+    state: present
+  become: true
+
+- name: Add Brother printer to installed printers
+  ansible.builtin.shell: |
+    lpadmin -p MFC-L2700DW -E -v "ipp://{{ printer_ip }}/ipp/print" -m everywhere

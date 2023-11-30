@@ -1,0 +1,6 @@
+- name: Install IM applications
+  snap:
+    name: 
+      - slack
+      - discord
+    state: present

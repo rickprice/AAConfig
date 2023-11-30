@@ -1,0 +1,50 @@
+---
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
+- name: Enable Wezterm on Copr
+  community.general.copr:
+    state: enabled
+    name: wezfurlong/wezterm-nightly
+
+- name: Enable Lazygit on Copr
+  community.general.copr:
+    state: enabled
+    name: atim/lazygit
+
+- name: Enable Fisher on Copr
+  community.general.copr:
+    state: enabled
+    name: bdperkin/fisher
+
+- name: Enable Starship on Copr
+  community.general.copr:
+    state: enabled
+    name: ffreiheit/starship
+
+- name: Enable iosevka on Copr
+  community.general.copr:
+    state: enabled
+    name: peterwu/iosevka
+
+- name: Enable firefox-developer-edition on Copr
+  community.general.copr:
+    state: enabled
+    name: the4runner/firefox-dev
+
+- name: Enable keyd on Copr
+  community.general.copr:
+    state: enabled
+    name: dspom/keyd
+
+- name: Install Snapd
+  package:
+    name: 
+      - snapd
+    state: present
+
+- name: Clone Dotfiles
+  ansible.builtin.git:
+    repo: https://github.com/rickprice/dotfiles.git
+    dest: /home/{{remote_regular_user}}/.dotfiles

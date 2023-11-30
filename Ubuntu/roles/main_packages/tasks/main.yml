@@ -1,0 +1,40 @@
+---
+- name: Install main packages
+  package:
+    name: 
+      - wezterm
+      - alacritty
+      - git-delta
+      # - perl
+      # - perl-local-lib
+      # - perl-archive-zip
+      # - cpanminus
+      - lazygit
+      - xinput
+      - solaar
+      # - xpub
+      - gh
+      - difftastic
+      - bat
+      - libreoffice
+      - calibre
+      - hub
+      - fd-find
+      - rust
+      - cargo
+    state: present
+  become: true
+
+- name: Remove Dotter
+  community.general.cargo:
+    name: dotter
+    path: /usr/local
+    state: absent
+  become: true
+
+- name: Install Dotter
+  community.general.cargo:
+    name: dotter
+    path: /usr/local
+    state: latest
+  become: true

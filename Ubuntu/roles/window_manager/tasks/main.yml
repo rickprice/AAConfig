@@ -1,0 +1,88 @@
+---
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
+- name: Install window manager packages
+  package:
+    name: 
+      # XMonad
+      - xmonad
+      # - xmonad-contrib
+      - xmobar
+      - stack
+      - xorg-x11-fonts-misc
+      # stuff to make a desktop work
+      - feh
+      - gnome-system-monitor
+      - bemenu
+      - volumeicon
+      - xfce4-power-manager
+      - network-manager-applet
+      - xmlstarlet
+      - meteo
+      # - ttf-weather-icons
+      - gnome-calculator
+      # For Trayer-srg
+      - gdk-pixbuf2-devel
+      - gtk2-devel
+      # Needed development tools for XMonad etc
+      - '@Development tools'
+      - '@c-development'
+      - gcc-c++
+      - redhat-rpm-config
+      # Notify-send for destkop notifications
+      - libnotify
+    state: present
+  become: true
+
+- name: Create external_repo directory
+  ansible.builtin.file:
+    path: /home/{{remote_regular_user}}/Documents/external_repo
+    state: directory
+    mode: '0755'
+
+- name: Clone wired-notify
+  ansible.builtin.shell:
+    cmd: |
+      git clone https://github.com/Toqozz/wired-notify.git
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo
+
+    creates: /home/{{remote_regular_user}}/Documents/external_repo/wired-notify
+
+
+- name: Install wired-notify
+  ansible.builtin.shell:
+    cmd: |
+      chmod a+x installer.sh
+      ./installer.sh
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo/wired-notify
+  become: true
+
+- name: Copy wired to /usr/local/bin
+  ansible.builtin.copy:
+    src: /home/{{remote_regular_user}}/Documents/external_repo/wired-notify/target/release/wired
+    dest: /usr/local/bin/wired
+    remote_src: yes
+    owner: root
+    group: root
+    mode: a+x
+
+- name: Clone Trayer-srg
+  ansible.builtin.git:
+    repo: https://github.com/sargon/trayer-srg.git
+    dest: /home/{{remote_regular_user}}/Documents/external_repo/trayer-srg
+
+- name: Build Trayer-srg
+  ansible.builtin.shell:
+    cmd: |
+      ./configure
+      make
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo/trayer-srg
+
+- name: Install Trayer-srg
+  ansible.builtin.shell:
+    cmd: |
+      make install
+    chdir: /home/{{remote_regular_user}}/Documents/external_repo/trayer-srg
+  become: true

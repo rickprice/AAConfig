@@ -1,0 +1,19 @@
+- name: Install filesystem packages
+  package:
+    name: 
+      - ntfs-3g
+      - ntfsprogs
+      - dosfstools
+      # - gnome-disk-utility
+      # - gparted
+      - util-linux
+      # THis is so you can connect a phone to the computer
+      - gvfs-mtp
+      - pcmanfm
+    state: present
+
+# - name: Enable SSD Trimming service
+#   ansible.builtin.systemd:
+#     name: fstrim.timer
+#     state: started
+#     enabled: true

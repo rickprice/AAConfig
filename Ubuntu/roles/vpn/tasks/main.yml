@@ -1,0 +1,10 @@
+---
+- name: Install vpn packages
+  package:
+    name: 
+      - wireguard-tools
+      - openresolv
+      # - wireguard-dkms
+      - NetworkManager-openvpn
+    state: present
+  become: true

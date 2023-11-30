@@ -1,0 +1,7 @@
+- name: Install database packages
+  package:
+    name: 
+      - dbeaver
+      - dbeaver-plugin-office
+      - dbeaver-plugin-svg-format
+    state: present

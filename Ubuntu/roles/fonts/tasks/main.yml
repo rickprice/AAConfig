@@ -1,0 +1,35 @@
+---
+- name: Install font packages
+  package:
+    name: 
+      # - xorg-xfontsel
+      - iosevka-fonts
+      - iosevka-term-fonts
+      # - ttf-iosevka-nerd
+      # - noto-fonts
+      # - noto-fonts-emoji
+      # - noto-fonts-extra
+      # - ttf-noto-nerd
+      # - ttf-linux-libertine
+      # - powerline-fonts
+      # - adobe-source-code-pro-fonts
+      # - ttf-font-awesome
+    state: present
+  become: true
+
+# - name: Install Cambria and Garamond fonts
+#   kewlfft.aur.aur:
+#     name: 
+#       - ttf-vista-fonts
+#       - ebgaramond-otf
+#     state: present
+#   become: true
+#   become_user: aur_builder
+#
+# - name: Install Amazon fonts
+#   kewlfft.aur.aur:
+#     name: 
+#       - amazon-fonts
+#     state: present
+#   become: true
+#   become_user: aur_builder

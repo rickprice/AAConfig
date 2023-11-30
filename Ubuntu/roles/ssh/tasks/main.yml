@@ -1,0 +1,12 @@
+- name: Install ssh packages 
+  package: 
+    name: 
+      - x11-ssh-askpass
+      - openssh-server
+    state: present
+
+- name: Enable sshd service
+  ansible.builtin.systemd:
+    name: sshd
+    state: started
+    enabled: true

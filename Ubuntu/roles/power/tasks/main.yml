@@ -1,0 +1,35 @@
+---
+- name: Install power packages
+  kewlfft.aur.aur:
+    name: 
+      - acpi
+      - tlp
+      # Depndencies for tlp
+      - ethtool
+      - smartmontools
+    state: present
+  become: true
+  become_user: aur_builder
+
+- name: Enable tlp service
+  ansible.builtin.systemd:
+    name: tlp
+    state: started
+    enabled: true
+
+- name: Enable Networkmanager-dispatcher service
+  ansible.builtin.systemd:
+    name: NetworkManager-dispatcher
+    state: started
+    enabled: true
+
+- name: Mask systemd-rfkill service
+  ansible.builtin.systemd:
+    name: systemd-rfkill
+    masked: true
+
+- name: Mask systemd-rfkill.socket service
+  ansible.builtin.systemd:
+    name: systemd-rfkill.socket
+    masked: true
+

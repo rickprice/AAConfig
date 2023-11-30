@@ -1,0 +1,53 @@
+- name: Install ActiveState required Snaps
+  snap:
+    name: 
+      - 1password
+    state: present
+
+
+To enable classic snap support, enter the following to create a symbolic link between /var/lib/snapd/snap and /snap: 
+
+
+
+
+- name: Install ActiveState required Snaps - kubectl
+  snap:
+    name: kubectl
+    classic: true
+
+- name: Install ActiveState required Snaps - k9s
+  snap:
+    name: k9s
+    classic: true
+
+- name: Install ActiveState required packages
+  package:
+    name:
+      # Fix state tool libxcrypt problems
+    #   - libxcrypt-compat
+      - python-isort
+      # Testing things
+      # - python-pipx
+    #   # - python-tox
+      # - pyenv
+      # - pyenv-virtualenv
+      # - python-virtualenv
+    #   # Needed for testing Django
+    #   - enchant
+    # # For handling CVE fixups
+    #   - gitkraken
+    # # For current_BE_sprint command
+      - python-typer
+      - python-click-log
+      # - python-atlassian-api
+      # - pipman-git
+    # # Python's for testing
+    #   - python2
+    #   - python36
+    # # For PR stuff
+      # - kubectl
+      # - k9s
+    # # For doing XML stuff
+      # - xmllib
+    state: present
+  become: true

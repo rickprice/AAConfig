@@ -1,0 +1,10 @@
+---
+- name: Install browser packages
+  package:
+    name: 
+      - google-chrome
+      - firefox-dev
+      - firefox
+      # - nyxt
+    state: present
+  become: true

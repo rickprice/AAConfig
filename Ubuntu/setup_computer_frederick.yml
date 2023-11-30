@@ -1,0 +1,19 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  become: true
+  roles:
+    - ActiveState
+    - vpn
+    - bit_utilities
+    - brother_printer
+    - epson_printer
+    - communications
+    # - database
+    - docker
+    - dropbox
+    - haskell
+    - keymapper
+    # - lua
+    - photographic
+    - openlp

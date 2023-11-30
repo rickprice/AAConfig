@@ -1,0 +1,33 @@
+---
+- name: Install photography packages
+  package:
+    name: 
+      # Geolocating
+      - perl-Image-ExifTool
+      # - gpsbabel
+      # - python-ijson
+      # Photograpic processing
+      - darktable
+      - gimp
+      - nomacs
+      - ImageMagick
+      - openexr
+      - dcraw
+      - gnuplot
+      - hugin
+      - gphoto2
+    # Collages
+      - photocollage
+    # Drawing
+      - inkscape
+    # File Manager Stuff
+      - pcmanfm
+      - tumbler
+      - poppler-glib
+      - ffmpegthumbnailer
+      # - freetype2
+      - libgsf
+      # - raw-thumbnailer
+      # - ufraw-thumbnailer
+    state: present
+  become: True

@@ -1,0 +1,7 @@
+- name: Install bit utilities
+  package:
+    name: 
+      # - tixati
+      - rclone
+    state: present
+  become: yes

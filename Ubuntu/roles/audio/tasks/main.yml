@@ -1,0 +1,15 @@
+- name: Install audio packages
+  kewlfft.aur.aur:
+    name: 
+      - pa-applet-git 
+      - pavucontrol
+      - sof-firmware
+      - alsa-utils
+      - pipewire-pulse 
+      - pipewire-jack 
+      - pipewire-alsa 
+      - wireplumber 
+      - qpwgraph
+    state: present
+  become: true
+  become_user: aur_builder
