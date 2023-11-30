@@ -9,12 +9,12 @@
       # - perl-local-lib
       # - perl-archive-zip
       # - cpanminus
-      - lazygit
+      # - lazygit
       - xinput
       - solaar
       # - xpub
       - gh
-      - difftastic
+      # - difftastic
       - bat
       - libreoffice
       - calibre
