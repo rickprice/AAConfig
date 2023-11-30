@@ -21,6 +21,7 @@
       - hub
       - fd-find
       - rustc
+      - cargo
     state: present
   become: true
 
