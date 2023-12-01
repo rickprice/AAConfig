@@ -30,12 +30,6 @@
     state: present
   become: true
 
-- name: Install Flatpack applications
-  flatpack:
-    name:
-      - wezterm
-    state: present
-
 - name: Install Snap applications
   snap:
     name: 
