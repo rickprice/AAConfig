@@ -11,7 +11,7 @@
       # - xmonad-contrib
       - xmobar
       # - stack
-      - xorg-x11-fonts-misc
+      # - xorg-x11-fonts-misc
       # stuff to make a desktop work
       - feh
       - gnome-system-monitor
