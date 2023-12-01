@@ -10,9 +10,7 @@
     name: 
       - neovim
       - xclip
-      - nodejs-npm
-      # - nodejs
-      # - npm
-      # - python-lsp-server
+      - nodejs
+      - npm
     state: present
   become: true
