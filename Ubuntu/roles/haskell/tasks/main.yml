@@ -7,9 +7,10 @@
       # - haskell-fourmolu
       # Haskell language server
       # - haskell-language-server-static
+      - ghcup
       - ghc
-      - cabal-install
-      - stack
+      # - cabal-install
+      # - stack
     state: present
   become: yes
 
