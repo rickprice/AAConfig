@@ -17,7 +17,7 @@
   package:
     name: 
       - bluez
-      # - bluez-utils
+      - bluez-utils
       - bluez-hid2hci
       - blueman
     state: present
