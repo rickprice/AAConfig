@@ -2,7 +2,7 @@
   package:
     name: 
       - ntfs-3g
-      - ntfsprogs
+      # - ntfsprogs
       - dosfstools
       - gnome-disk-utility
       - gparted
