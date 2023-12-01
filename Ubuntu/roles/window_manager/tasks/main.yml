@@ -16,7 +16,7 @@
       - feh
       - gnome-system-monitor
       - bemenu
-      - volumeicon
+      # - volumeicon
       - xfce4-power-manager
       - network-manager-applet
       - xmlstarlet
