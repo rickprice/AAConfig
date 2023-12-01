@@ -5,6 +5,7 @@
       # Fix state tool libxcrypt problems
       - libxcrypt-compat
       - python-isort
+      - python-black
       # Testing things
       - python-pipx
       # - python-tox
