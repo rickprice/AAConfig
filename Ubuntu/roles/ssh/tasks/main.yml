@@ -5,8 +5,8 @@
       - openssh-server
     state: present
 
-- name: Enable sshd service
-  ansible.builtin.systemd:
-    name: sshd
-    state: started
-    enabled: true
+# - name: Enable sshd service
+#   ansible.builtin.systemd:
+#     name: sshd
+#     state: started
+#     enabled: true
