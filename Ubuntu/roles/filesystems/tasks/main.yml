@@ -8,7 +8,7 @@
       - gparted
       - util-linux
       # THis is so you can connect a phone to the computer
-      - gvfs-mtp
+      # - gvfs-mtp
       - pcmanfm
     state: present
 
