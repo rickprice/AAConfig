@@ -2,7 +2,7 @@
 - name: Install browser packages
   package:
     name: 
-      - firefox-dev
+      # - firefox-dev
       - firefox
       # - nyxt
     state: present
