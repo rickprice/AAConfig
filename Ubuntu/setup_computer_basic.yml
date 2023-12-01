@@ -10,10 +10,10 @@
     - bluetooth
     - browsers
     - filesystems
-    - fonts
-    # - neovim
+    # - fonts
+    - neovim
     # # - power
-    # - shell
-    # - ssh
-    # - window_manager
+    - shell
+    - ssh
+    - window_manager
     # - final_setup
