@@ -4,8 +4,8 @@
       - ntfs-3g
       - ntfsprogs
       - dosfstools
-      # - gnome-disk-utility
-      # - gparted
+      - gnome-disk-utility
+      - gparted
       - util-linux
       # THis is so you can connect a phone to the computer
       - gvfs-mtp

@@ -9,7 +9,7 @@
     # # - video
     - bluetooth
     - browsers
-    # - filesystems
+    - filesystems
     # - fonts
     # - neovim
     # # - power
