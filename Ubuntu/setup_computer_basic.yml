@@ -8,7 +8,7 @@
     # # - audio
     # # - video
     - bluetooth
-    # - browsers
+    - browsers
     # - filesystems
     # - fonts
     # - neovim
