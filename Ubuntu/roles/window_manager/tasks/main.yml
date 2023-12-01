@@ -10,7 +10,7 @@
       - xmonad
       # - xmonad-contrib
       - xmobar
-      - stack
+      # - stack
       - xorg-x11-fonts-misc
       # stuff to make a desktop work
       - feh
@@ -27,10 +27,10 @@
       - gdk-pixbuf2-devel
       - gtk2-devel
       # Needed development tools for XMonad etc
-      - '@Development tools'
-      - '@c-development'
+      # - '@Development tools'
+      # - '@c-development'
       - gcc-c++
-      - redhat-rpm-config
+      # - redhat-rpm-config
       # Notify-send for destkop notifications
       - libnotify
     state: present
