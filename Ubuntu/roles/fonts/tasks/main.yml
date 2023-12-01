@@ -2,7 +2,7 @@
 - name: Install font packages
   package:
     name: 
-      - xorg-xfontsel
+      # - xorg-xfontsel
       - iosevka-fonts
       - iosevka-term-fonts
       - ttf-iosevka-nerd
