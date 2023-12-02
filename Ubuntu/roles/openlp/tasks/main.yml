@@ -1,7 +1,7 @@
 - name: Install OpenLP packages
   package:
     name: 
-      - OpenLP
+      - openlp
       - vlc
       - python3-vlc
     state: present
