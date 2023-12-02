@@ -15,5 +15,5 @@
     # # - power
     - shell
     - ssh
-    - window_manager
+    # - window_manager
     # - final_setup

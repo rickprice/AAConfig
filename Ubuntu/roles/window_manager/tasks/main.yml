@@ -18,7 +18,7 @@
       - bemenu
       # - volumeicon
       - xfce4-power-manager
-      - network-manager-applet
+      # - network-manager-applet
       - xmlstarlet
       - meteo
       # - ttf-weather-icons
