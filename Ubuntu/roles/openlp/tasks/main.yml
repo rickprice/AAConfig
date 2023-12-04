@@ -4,4 +4,5 @@
       - openlp
       - vlc
       - python3-vlc
+      - libreoffice
     state: present
