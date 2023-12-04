@@ -1,0 +1,24 @@
+---
+
+# https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html#defining-inner-and-outer-variable-names-with-loop-var
+- name: "Install Libre Caslon TTF font files"
+  ansible.builtin.copy:
+    remote_src: yes
+    src: "{{ repos.local }}/fonts/TTF/LibreCaslon{{ fontitem }}.ttf"
+    dest: "{{ fonts_librecaslon_dir }}/LibreCaslon-{{ fontitem }}.ttf"
+    mode: u=rw,go=r
+  loop:
+    - Text-Bold
+    - Text-Italic
+    - Text-Regular
+    - Display-Regular
+  loop_control:
+    loop_var: fontitem 
+  register: librecaslon_installed
+  # since the Display font only contains Regular, and I don't want to overcomplicate this task,
+  # I chose to simply ignore errors. This works well, with one error the first iteration, and three errors on the second.
+  ignore_errors: true
+
+- name: Update the font cache
+  ansible.builtin.command: fc-cache -fv
+  when: librecaslon_installed.changed | bool

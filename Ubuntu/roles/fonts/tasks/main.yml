@@ -1,22 +1,37 @@
 ---
-- name: Install font packages
-  package:
-    name: 
-      # - xorg-xfontsel
-      - iosevka-fonts
-      - iosevka-term-fonts
-      - ttf-iosevka-nerd
-      - noto-fonts
-      - noto-fonts-emoji
-      - noto-fonts-extra
-      - ttf-noto-nerd
-      - ttf-linux-libertine
-      - powerline-fonts
-      - adobe-source-code-pro-fonts
-      - ttf-font-awesome
-      - ttf-vista-fonts
-      - ebgaramond-otf
-      - amazon-fonts
-    state: present
-  become: true
 
+# fontconfig package provides fc-cache command
+- name: Install fontconfig package
+  ansible.builtin.apt:
+    name: fontconfig
+    state: present
+
+
+# fonts installed on all hosts
+# (let's limit those to fonts that are available in the Ubuntu repos)
+- ansible.builtin.import_tasks: ebgaramond.yml
+- ansible.builtin.import_tasks: emoji.yml
+- ansible.builtin.import_tasks: liberation.yml
+- ansible.builtin.import_tasks: misc.yml
+
+
+- name: Fonts installed for workstations (non-virtual) and thebes servers
+  # lxd_containers group includes RStudio servers, Nextcloud (OnlyOffice/Collabora), etc.
+  when: >
+    'workstation' in group_names or
+    'lxd_host' in group_names or
+    'lxd_containers' in group_names
+  block:
+
+    - ansible.builtin.import_tasks: baskerville.yml
+
+    - ansible.builtin.import_tasks: firacode.yml
+      tags: firacode
+
+    - ansible.builtin.import_tasks: libre-caslon.yml
+
+    - ansible.builtin.import_tasks: libre-franklin.yml
+
+    - ansible.builtin.import_tasks: stixfonts.yml
+      tags: stixfonts
+  # END OF BLOCK

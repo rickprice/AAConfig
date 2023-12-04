@@ -1,0 +1,88 @@
+---
+
+# The Ubuntu packages are very outdated:
+# $ apt-cache madison fonts-firacode
+# fonts-firacode |    1.204-2 | http://se.archive.ubuntu.com/ubuntu bionic/universe amd64
+# fonts-firacode |  2+dfsg1-1 | http://archive.ubuntu.com/ubuntu focal/universe amd64 Packages
+# as you can see, Bionic offers v1.2, whereas I don't even understand what version Focal offers (is that v2?).
+# but Firacode is currently at v6.2 (Github release page)
+# So we will install the font the manual way
+# https://github.com/tonsky/FiraCode/wiki/Linux-instructions#manual-installation
+
+# Some background research
+# https://community.rstudio.com/t/ligatures-in-rstudio-1-1-364-preview/669/17
+# https://github.com/i-tu/Hasklig
+# https://nitter.net/thomasp85/status/1303252579997093890
+
+# Setback! Turns out RStudio Server does not see fonts installed on the system
+# https://community.rstudio.com/t/custom-font-in-rstudio-server/1916/6
+# there are a few possible work-arounds:
+# https://github.com/rstudio/rstudio/issues/2534
+# but I haven't tested any of them yet. Official support is probably coming with RStudio Server 1.4.x:
+# https://github.com/rstudio/rstudio/pull/6592
+# [README file with instructions](https://github.com/rstudio/rstudio/pull/6592/commits/b41647c2e847271a1d3d866c6deffb7b79a89599)
+
+
+- name: Set FiraCode directory
+  ansible.builtin.set_fact:
+    fonts_firacode_dir: /usr/share/fonts/truetype/firacode
+    cache_firacode_dir: "{{ ansible_env.HOME }}/.cache/firacode"
+
+# note that this task is no longer required, it's just nice to be able to
+# print the version number in the download task
+- name: Query Github API for the latest FiraCode release
+  run_once: true
+  delegate_to: localhost
+  ansible.builtin.shell: |
+    curl -s https://api.github.com/repos/tonsky/FiraCode/releases/latest |
+    jq -r ".tag_name"
+  register: firacode_release # 6.2
+
+- name: "Make sure FiraCode target and cache directories exist"
+  ansible.builtin.file:
+    path: "{{ item.dir }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    state: directory
+  loop:
+    - dir: "{{ fonts_firacode_dir }}"
+      owner: "root"
+      group: "root"
+    - dir: "{{ cache_firacode_dir }}"
+      owner: "{{ ansible_env.USER }}"
+      group: "{{ ansible_env.USER }}"
+
+# since v6.2 (or possibly even since v6.0) the built fonts are no longer included in the git repo
+# https://github.com/tonsky/FiraCode/releases/download/6.1/Fira_Code_v6.1.zip
+- name: "Query Github API for the URL of the FiraCode v{{ firacode_release.stdout }} zip archive"
+  run_once: true
+  delegate_to: localhost
+  ansible.builtin.shell: |
+    curl -s https://api.github.com/repos/tonsky/FiraCode/releases/latest |
+    jq -r ".assets[] | .browser_download_url"
+  register: firacode_archive
+
+# https://stackoverflow.com/a/54306039
+# `--add-file ttf` works for tar, but can the same be achieved for zip?
+# https://unix.stackexchange.com/questions/14120/extract-only-a-specific-file-from-a-zipped-archive-to-a-given-directory
+# No, I don't think so. We will have to extract in two steps, then.
+# Extract the full zip archive
+- name: "Download and extract FiraCode v{{ firacode_release.stdout }} zip archive"
+  ansible.builtin.unarchive:
+    remote_src: yes
+    src: "{{ firacode_archive.stdout }}"
+    dest: "{{ cache_firacode_dir }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+
+# Copy only the contents of the TTF folder to fonts directory
+- name: Install FiraCode TTF fonts
+  ansible.builtin.copy:
+    remote_src: yes
+    src: "{{ cache_firacode_dir }}/ttf/"
+    dest: "{{ fonts_firacode_dir }}"
+  register: firacode_installed
+
+- name: Update the font cache
+  ansible.builtin.command: fc-cache -fv
+  when: firacode_installed.changed | bool

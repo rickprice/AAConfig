@@ -1,0 +1,33 @@
+---
+
+# Liberation fonts
+# https://www.computerworld.com/article/2481396/liberation-fonts-for-linux.html
+
+# > There are three sets of Liberation fonts: 
+# > Sans (a substitute for Arial, Albany, Helvetica, Nimbus Sans L, and Bitstream Vera Sans), 
+# > Serif (a substitute for Times New Roman, Thorndale, Nimbus Roman, and Bitstream Vera Serif) and 
+# > Mono (a substitute for Courier New, Cumberland, Courier, Nimbus Mono L, and Bitstream Vera Sans Mono).
+# > https://www.computerworld.com/article/2481396/liberation-fonts-for-linux.html
+
+# > Enhanced version 2.0 of Liberation fonts provides more script coverage, better license and improved hinting.
+# > https://fedoraproject.org/wiki/Features/Liberation_Fonts_2
+
+- name: Install Liberation fonts (both v1 and v2)
+  ansible.builtin.apt:
+    name:
+      - fonts-liberation
+      - fonts-liberation2
+    state: present
+  register: liberation_installed
+  when: ansible_distribution_major_version | int >= 18
+
+- name: Install Liberation fonts (only v1)
+  ansible.builtin.apt:
+    name: fonts-liberation
+    state: present
+  register: liberation_installed
+  when: ansible_distribution_major_version | int < 18
+
+- name: Update the font cache
+  ansible.builtin.command: fc-cache -fv
+  when: liberation_installed.changed | bool

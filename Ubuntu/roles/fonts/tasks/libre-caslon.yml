@@ -1,0 +1,59 @@
+---
+
+# Libre Caslon fonts
+# Not available in Ubuntu or Debian repos, as far as I can tell
+# The Github repos dont list releases, so we will install specific font files
+# To avoid repeating these tasks when nothing has changed, we will first
+# clone the repo locally, and copy the font files from there if clone task changed.
+
+- name: Set Libre Caslon facts
+  ansible.builtin.set_fact:
+    fonts_librecaslon_dir: /usr/share/fonts/opentype/libre-caslon
+    fonts_librecaslon_repos:
+      - remote: "https://github.com/impallari/Libre-Caslon-Text"
+        local: "{{ ansible_env.HOME }}/.local/git/libre-caslon-text"
+      - remote: "https://github.com/impallari/Libre-Caslon-Display"
+        local: "{{ ansible_env.HOME }}/.local/git/libre-caslon-display"
+
+- name: Make sure repo's parent directory exists
+  ansible.builtin.file:
+    path: "{{ fonts_librecaslon_repos[0].local | dirname }}"
+    state: directory
+  become: yes
+  become_user: "{{ ansible_env.USER }}"
+
+- name: Clone the Libre Caslon repos
+  ansible.builtin.git:
+    repo: "{{ item.remote }}"
+    dest: "{{ item.local }}"
+  become: yes
+  become_user: "{{ ansible_env.USER }}"
+  with_items: "{{ fonts_librecaslon_repos }}"
+  register: librecaslon_repo
+
+- name: Install Libre Caslon fonts
+  when: librecaslon_repo.changed | bool # rerun whenever either repo has changed
+  block:
+
+    - name: Make sure the Libre Caslon font directory exists
+      ansible.builtin.file:
+        path: "{{ fonts_librecaslon_dir }}"
+        state: directory
+
+    # use a nested loop to loop over repos as well as font names
+    - ansible.builtin.include_tasks: libre-caslon-inner.yml
+      loop: "{{ fonts_librecaslon_repos }}"
+      loop_control:
+        loop_var: repos
+
+    - name: Update the font cache
+      ansible.builtin.command: fc-cache -fv
+      when: librecaslon_installed.changed | bool # update when any one of the font files has been changed
+  # END OF BLOCK
+
+
+- name: Clean up the local git repo
+  ansible.builtin.file:
+    path: "{{ item.local }}"
+    state: absent
+  loop: "{{ fonts_librecaslon_repos }}"

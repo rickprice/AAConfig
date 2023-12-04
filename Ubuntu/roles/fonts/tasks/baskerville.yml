@@ -1,0 +1,73 @@
+---
+
+# Libre Baskerville
+
+# I'm not sure whether this github repo 
+# https://github.com/impallari/Libre-Baskerville
+# and this package in the Ubuntu repos is the same font:
+# apt-cache show fonts-gfs-baskerville
+
+# Yeah, they are definitely different fonts.
+# GFS Baskerville only installs a single style: Regular, whereas Libre Baskerville supplies regular/bold/italic.
+
+# The Github repo for Libre Baskerville does not list releases, so we will install specific font files
+# To avoid repeating these tasks when nothing has changed, we will first
+# clone the repo locally, and copy the font files from there if clone task changed.
+
+- name: Install GFS Baskerville font from Ubuntu repos
+  ansible.builtin.apt:
+    name: fonts-gfs-baskerville
+    state: present
+  register: gfs_baskerville_installed
+
+- name: Set Libre Baskerville ansible facts
+  ansible.builtin.set_fact:
+    fonts_librebaskerville_dir: /usr/share/fonts/opentype/libre-baskerville
+    fonts_librebaskerville_remote: https://github.com/impallari/Libre-Baskerville
+    fonts_librebaskerville_repo: "{{ ansible_env.HOME }}/.local/git/libre-baskerville"
+
+- name: Make sure repo's parent directory exists
+  ansible.builtin.file:
+    path: "{{ fonts_librebaskerville_repo | dirname }}"
+    state: directory
+  become: yes
+  become_user: "{{ ansible_env.USER }}"
+
+- name: Clone the Libre Baskerville repo
+  ansible.builtin.git:
+    repo: "{{ fonts_librebaskerville_remote }}"
+    dest: "{{ fonts_librebaskerville_repo }}"
+  become: yes
+  become_user: "{{ ansible_env.USER }}"
+  register: librebaskerville_repo
+
+- name: Install Libre Baskerville font
+  when: librebaskerville_repo.changed | bool
+  block:
+
+    - name: Make sure {{ fonts_librebaskerville_dir }} directory exists
+      ansible.builtin.file:
+        path: "{{ fonts_librebaskerville_dir }}"
+        state: directory
+
+    - name: "Install Libre Baskerville TTF font files"
+      ansible.builtin.copy:
+        remote_src: yes
+        src: "{{ fonts_librebaskerville_repo }}/LibreBaskerville-{{ item }}.ttf"
+        dest: "{{ fonts_librebaskerville_dir }}/LibreBaskerville-{{ item }}.ttf"
+        mode: u=rw,go=r
+      with_items:
+        - Bold
+        - Italic
+        - Regular
+      register: librebaskerville_installed
+  # END OF BLOCK
+
+- name: Update the font cache
+  ansible.builtin.command: fc-cache -fv
+  when: (librebaskerville_installed.changed | bool) or (gfs_baskerville_installed.changed | bool)
+
+- name: Clean up the local git repo
+  ansible.builtin.file:
+    path: "{{ fonts_librebaskerville_repo }}"
+    state: absent

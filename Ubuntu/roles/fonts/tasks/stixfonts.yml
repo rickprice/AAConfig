@@ -1,0 +1,132 @@
+---
+
+# The Ubuntu packages are very outdated:
+# $ apt-cache madison fonts-stix
+# fonts-stix |    1.1.1-4 | http://se.archive.ubuntu.com/ubuntu bionic/universe amd64 Packages
+# but stixfonts is currently at v2.13 (Github release page)
+# So we will install the font the manual way
+# https://github.com/stipub/stixfonts#build-instructions
+
+# Some background research
+# https://www.stixfonts.org/
+# https://blog.front-matter.io/posts/stix-fonts-for-electronic-and-print-publishing
+
+- name: Set stixfonts facts
+  ansible.builtin.set_fact:
+    stixfonts_dir: /usr/share/fonts/truetype/stixfonts
+    stixfonts_remote: https://github.com/stipub/stixfonts
+    stixfonts_repo: "{{ ansible_env.HOME }}/.local/git/stixfonts"
+    stixfonts_build: no
+
+- name: Query Github API for the latest stixfonts release
+  run_once: true
+  delegate_to: localhost
+  ansible.builtin.shell: |
+    curl -s https://api.github.com/repos/stipub/stixfonts/releases/latest |
+    jq -r ".tag_name"
+  register: stixfonts_release # v2.13b171
+
+- name: Clone the stixfonts repo
+  ansible.builtin.git:
+    repo: "{{ stixfonts_remote }}"
+    dest: "{{ stixfonts_repo }}"
+    version: "{{ stixfonts_release.stdout }}"
+    force: yes
+  become: true
+  become_user: "{{ ansible_env.USER }}"
+  register: stixfonts_clone
+
+
+# Fonts *can* be built using the build.sh script, but it's not necessary
+# since the fonts/ directory already contains the necessary OTF/TTF files
+# But at first I mistakenly thought the build step was required, and so leave
+# this code in place but it's not run by default
+- name: Build the fonts
+  when: stixfonts_build | bool
+  block:
+
+    # build.sh fails unless these pip modules are added to requirements
+    # weirdly enough this is not mentioned anywhere in the stixfonts github repo or its issue queue
+    - name: Add needed pip modules to requirements.txt
+      ansible.builtin.lineinfile:
+        path: "{{ stixfonts_repo }}/requirements.txt"
+        regexp: "^{{ item }}"
+        line: "{{ item }}"
+        state: present
+      loop:
+        - importlib-resources
+        - typing-extensions
+        - zipp
+
+    # build.sh fails: `ModuleNotFoundError: No module named 'typing_extensions'`
+    # There exists a PIP module named typing-extensions
+    # https://pypi.org/project/typing-extensions/
+    # I added it to requirements.in and re-ran, same error
+    # Added it to requirements.txt instead, build progressed
+    # New error, after most fonts were built: `ModuleNotFoundError: No module named 'importlib_resources'`
+    # Let's add this too to requirements.txt
+    # https://pypi.org/project/importlib-resources/
+    # Another missing module (what's up with this useless requirements file): no module named zipp
+    # https://pypi.org/project/zipp/
+    # OK, all stopping errors resolved by adding those modules to requirements.txt
+    - name: Build the stixfonts
+      ansible.builtin.command: ./build.sh
+      become: true
+      become_user: "{{ ansible_env.USER }}"
+      args:
+        chdir: "{{ stixfonts_repo }}"
+  # END OF BLOCK
+
+
+- name: "Make sure {{ stixfonts_dir }} directory exists"
+  ansible.builtin.file:
+    path: "{{ stixfonts_dir }}"
+    state: directory
+    mode: 0755
+
+# When the directory is completely empty (no files, no subdirs):
+# ok: [asks2] => {
+#     "stixfonts_empty": {
+#         "changed": false,
+#         "examined": 0,
+#         "failed": false,
+#         "files": [],
+#         "matched": 0,
+#         "msg": ""
+#     }
+# }
+# When the directory itself contains files, examined == matched == the number of files,
+# and the files array will contain as many elements as files (each element an array)
+# When the directory contains subdirectories but no files, examined == no of subdirs, but
+# matched == 0 and files == [] (empty array).
+# Note that files inside subdirectories don't matter towards the value in examined/matched,
+# only files/dirs in the directory itself.
+# `examined` is the total number of directories and files.
+# `matched` is the number of files (not counting directories), and the `files` array lists metadata on the files.
+- name: "Check the {{ stixfonts_dir }} directory"
+  ansible.builtin.find:
+    paths: "{{ stixfonts_dir }}"
+  register: stixfonts_empty
+
+# https://stackoverflow.com/a/56479790
+- name: "Copy STIXTwo static TTF font files to {{ stixfonts_dir }}"
+  ansible.builtin.copy:
+    remote_src: yes
+    src: "{{ stixfonts_repo }}/fonts/static_ttf/"
+    dest: "{{ stixfonts_dir }}"
+    # mode: u=rw,go=r # don't set mode here, overwrites dir mods as well, -x obviously not good for directory
+  # trying to be smarter, install fonts not only if repo has changed, but
+  # also if not installed (no files in stixfonts_dir)
+  when: (stixfonts_clone.changed | bool) or (stixfonts_empty.matched == 0)
+  register: stixfonts_installed
+
+- name: Update the font cache
+  ansible.builtin.command: fc-cache -fv
+  when: stixfonts_installed.changed | bool
+
+- name: Clean up the local git repo
+  ansible.builtin.file:
+    path: "{{ stixfonts_repo }}"
+    state: absent
+  # unless we built the fonts, then keep the directory around to avoid eventual re-builds
+  when: not (stixfonts_build | bool)

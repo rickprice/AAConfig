@@ -1,0 +1,41 @@
+---
+
+# so apparently we need to install an emoji font to render emojis
+# Ubuntu desktop installs this package by default, but since
+# I am building my workstation on Ubuntu Server, I need to make
+# sure Noto Emoji font is installed
+
+# https://discourse.ubuntu.com/t/emoji-support-missing-from-ubuntu-19-04-minimal-install/11083/14
+# https://bugs.launchpad.net/ubuntu/+source/fonts-noto-color-emoji/+bug/1859926
+# https://gitlab.freedesktop.org/fontconfig/fontconfig/-/issues/136
+# https://bugs.webkit.org/show_bug.cgi?id=191976#c1
+# https://github.com/googlefonts/noto-emoji/issues/36
+
+# If that does not work, consider building from source
+# https://github.com/googlefonts/noto-emoji
+
+# since Ubuntu 18.04, the process is greatly simplified: just install this package
+# https://askubuntu.com/a/1059396
+- name: Install Noto Color Emoji font
+  ansible.builtin.apt:
+    name: fonts-noto-color-emoji
+    state: present
+  register: font_installed
+  when: ansible_distribution_major_version | int >= 18
+
+# no package matching `fonts-noto-color-emoji` exists in Ubuntu Bionic and earlier
+# rather than disable this set of tasks for old hosts, let's install Symbola instead
+# except Symbola is not available on Ubuntu 14.04
+- name: Install Symbola font
+  ansible.builtin.apt:
+    name: fonts-symbola
+    state: present
+  register: font_installed
+  when: 
+    - ansible_distribution_major_version | int < 18
+    - ansible_distribution_major_version | int > 14
+
+# I'm not sure refreshing the cache was necessary, but just to be sure...
+- name: Update the font cache
+  ansible.builtin.command: fc-cache -fv
+  when: font_installed.changed | bool

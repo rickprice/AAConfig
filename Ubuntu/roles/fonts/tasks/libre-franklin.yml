@@ -1,0 +1,76 @@
+---
+
+# Libre Franklin
+# Not available in Ubuntu or Debian repos, as far as I can tell
+# The Github repo does not list releases, so we will install specific font files
+# To avoid repeating these tasks when nothing has changed, we will first
+# clone the repo locally, and copy the font files from there if clone task changed.
+
+
+- name: Set Libre Franklin facts
+  ansible.builtin.set_fact:
+    fonts_librefranklin_dir: /usr/share/fonts/opentype/libre-franklin
+    fonts_librefranklin_remote: https://github.com/impallari/Libre-Franklin
+    fonts_librefranklin_repo: "{{ ansible_env.HOME }}/.local/git/libre-franklin"
+
+- name: Make sure repo's parent directory exists
+  ansible.builtin.file:
+    path: "{{ fonts_librefranklin_repo | dirname }}"
+    state: directory
+  become: yes
+  become_user: "{{ ansible_env.USER }}"
+
+- name: Clone the Libre Franklin repo
+  ansible.builtin.git:
+    repo: "{{ fonts_librefranklin_remote }}"
+    dest: "{{ fonts_librefranklin_repo }}"
+  become: yes
+  become_user: "{{ ansible_env.USER }}"
+  register: librefranklin_repo
+
+- name: Install Libre Franklin font
+  when: librefranklin_repo.changed | bool
+  block:
+
+    - name: Make sure {{ fonts_librefranklin_dir }} directory exists
+      ansible.builtin.file:
+        path: "{{fonts_librefranklin_dir }}"
+        state: directory
+
+    - name: "Install Libre Franklin TTF font files"
+      ansible.builtin.copy:
+        remote_src: yes
+        src: "{{ fonts_librefranklin_repo }}/fonts/TTF/LibreFranklin-{{ item }}.ttf"
+        dest: "{{ fonts_librefranklin_dir }}/LibreFranklin-{{ item }}.ttf"
+        mode: u=rw,go=r
+      loop:
+        - Black
+        - BlackItalic
+        - Bold
+        - BoldItalic
+        - ExtraBold
+        - ExtraBoldItalic
+        - ExtraLight
+        - ExtraLightItalic
+        - Italic
+        - Light
+        - LightItalic
+        - Medium
+        - MediumItalic
+        - Regular
+        - SemiBold
+        - SemiBoldItalic
+        - Thin
+        - ThinItalic
+      register: librefranklin_installed
+  # END OF BLOCK
+
+
+- name: Update the font cache
+  ansible.builtin.command: fc-cache -fv
+  when: librefranklin_installed.changed | bool
+
+- name: Clean up the local git repo
+  ansible.builtin.file:
+    path: "{{ fonts_librefranklin_repo }}"
+    state: absent

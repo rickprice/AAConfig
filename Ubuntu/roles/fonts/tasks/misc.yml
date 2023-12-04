@@ -1,0 +1,17 @@
+---
+
+# this task completes the fonts required by OnlyOffice DocumentServer
+- name: Install additional fonts required by OnlyOffice DocumentServer
+  ansible.builtin.apt:
+    name:
+      - fonts-dejavu
+      - ttf-mscorefonts-installer
+      - fonts-crosextra-carlito
+      - fonts-takao-gothic
+      - fonts-opensymbol
+    state: present
+  register: misc_installed
+
+- name: Update the font cache
+  ansible.builtin.command: fc-cache -fv
+  when: misc_installed.changed | bool
