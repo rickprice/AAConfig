@@ -1,4 +1,8 @@
 ---
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
 - name: Create the `aur_builder` user
   become: yes
   ansible.builtin.user:
@@ -25,3 +29,8 @@
     state: present
   become: yes
   become_user: aur_builder
+
+- name: Clone Dotfiles
+  ansible.builtin.git:
+    repo: https://github.com/rickprice/dotfiles.git
+    dest: /home/{{remote_regular_user}}/.dotfiles
