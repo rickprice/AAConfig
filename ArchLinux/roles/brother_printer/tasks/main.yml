@@ -38,6 +38,7 @@
       - simple-scan-git
       - gtk4
       - libadwaita
+      - sane-airscan
     state: present
   become: true
   become_user: aur_builder
