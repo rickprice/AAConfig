@@ -10,7 +10,7 @@
     name: 
       - wezterm-git
       - alacritty
-      - git-delta-git
+      - git-delta
       - perl
       - perl-local-lib
       - perl-archive-zip

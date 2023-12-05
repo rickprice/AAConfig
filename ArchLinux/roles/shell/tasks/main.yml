@@ -7,9 +7,9 @@
   kewlfft.aur.aur:
     name: 
       - fish
-      - fisher-git
-      - fzf-git
-      - zoxide-git
+      - fisher
+      - fzf
+      - zoxide
       - starship
     state: present
   become: true
