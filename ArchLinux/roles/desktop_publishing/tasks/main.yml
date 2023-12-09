@@ -1,0 +1,10 @@
+---
+- name: Install Scribus and related packages
+  kewlfft.aur.aur:
+    name: 
+      # Scribus
+      - scribus
+      - lcms
+    state: present
+  become: true
+  become_user: aur_builder
