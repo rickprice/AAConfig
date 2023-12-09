@@ -4,8 +4,8 @@
     name: 
       # Scribus
       - scribus
-      - lcms
       - gdal
+      - libvncserver
     state: present
   become: true
   become_user: aur_builder
