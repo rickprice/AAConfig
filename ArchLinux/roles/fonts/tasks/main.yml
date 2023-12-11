@@ -34,7 +34,7 @@
     - ttf-fira-sans
     - ttf-font-awesome
     - ttf-gelasio-ib
-    - ttf-google-fonts-git
+    # - ttf-google-fonts-git
     - ttf-impallari-cantora
     - ttf-inconsolata
     - ttf-inconsolata
