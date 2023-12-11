@@ -1,6 +1,6 @@
 ---
 - name: Remove fonts so install can go through
-  kewlfft.aur.aur:
+  ansible.builtin.package:
     name:
     - ttf-carlito
 
