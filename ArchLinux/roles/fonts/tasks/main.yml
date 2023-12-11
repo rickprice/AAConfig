@@ -1,4 +1,13 @@
 ---
+- name: Remove fonts so install can go through
+  kewlfft.aur.aur:
+    name:
+    - ttf-carlito
+
+    state: absent
+  become: true
+  become_user: aur_builder
+
 - name: Install Fonts
   kewlfft.aur.aur:
     name:
@@ -26,7 +35,7 @@
     - ttf-bitstream-vera
     - ttf-bitstream-vera
     - ttf-caladea
-    - ttf-carlito
+    # - ttf-carlito
     # - ttf-courier-prime-emoji
     - ttf-dejavu
     - ttf-dejavu
@@ -34,7 +43,7 @@
     - ttf-fira-sans
     - ttf-font-awesome
     - ttf-gelasio-ib
-    # - ttf-google-fonts-git
+    - ttf-google-fonts-git
     - ttf-impallari-cantora
     - ttf-inconsolata
     - ttf-inconsolata
