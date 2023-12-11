@@ -28,7 +28,7 @@
       - kubectl
       - k9s
     # For doing XML stuff
-      - xmllib
+      # - xmllib
     state: present
   become: yes
   become_user: aur_builder
