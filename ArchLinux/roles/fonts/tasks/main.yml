@@ -63,3 +63,36 @@
     state: present
   become: true
   become_user: aur_builder
+
+- name: Sub Pixel RGB Hints
+  ansible.builtin.file:
+    src: /usr/share/fontconfig/conf.avail/10-sub-pixel-rgb.conf
+    dest: /etc/fonts/conf.d/10-sub-pixel-rgb.conf
+    owner: root
+    group: root
+    state: link
+  become: true
+
+- name: Use LCD Filter on Fonts
+  ansible.builtin.file:
+    src: /usr/share/fontconfig/conf.avail/11-lcdfilter-default.conf
+    dest: /etc/fonts/conf.d/11-lcdfilter-default.conf
+    owner: root
+    group: root
+    state: link
+  become: true
+
+- name: No Bitmap Fonts
+  ansible.builtin.file:
+    src: /usr/share/fontconfig/conf.avail/70-no-bitmaps.conf
+    dest: /etc/fonts/conf.d/70-no-bitmaps.conf
+    owner: root
+    group: root
+    state: link
+  become: true
+
+- name: Ensure we are using subpixel hinting
+  ansible.builtin.lineinfile:
+    path: /etc/profile.d/freetype2.sh
+    regexp: '^export FREETYPE_PROPERTIES='
+    line: 'export FREETYPE_PROPERTIES="truetype:interpreter-version=40"'
