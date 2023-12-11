@@ -8,7 +8,7 @@
 - name: Install main packages
   kewlfft.aur.aur:
     name: 
-      - wezterm-git
+      - wezterm
       - alacritty
       - git-delta
       - perl
