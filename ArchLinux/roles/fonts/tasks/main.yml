@@ -2,34 +2,63 @@
 - name: Install vpn packages
   kewlfft.aur.aur:
     name: 
-      - xorg-xfontsel
-      - ttf-iosevka
-      - ttf-iosevka-nerd
-      - noto-fonts
-      - noto-fonts-emoji
-      - noto-fonts-extra
-      - ttf-noto-nerd
-      - ttf-linux-libertine
-      - powerline-fonts
-      - adobe-source-code-pro-fonts
-      - ttf-font-awesome
-    state: present
-  become: true
-  become_user: aur_builder
+    # ttf-chromeos-fonts
+    # ttf-clear-sans
+    # ttf-gentium
+    # ttf-noto
+    - adobe-source-code-pro-fonts
+    - adobe-source-sans-pro-fonts
+    - adobe-source-serif-pro-fonts
+    - amazon-fonts
+    - artwiz-fonts
+    - ebgaramond-otf
+    - font-bh-ttf
+    - gsfonts
+    - libertinus-font
+    - noto-fonts
+    - noto-fonts-emoji
+    - noto-fonts-extra
+    - otf-fira-mono
+    - otf-fira-sans
+    - otf-overpass
+    - powerline-fonts
+    - tex-gyre-fonts
+    - ttf-bitstream-vera
+    - ttf-bitstream-vera 
+    - ttf-caladea
+    - ttf-carlito
+    - ttf-courier-prime-emoji
+    - ttf-dejavu
+    - ttf-dejavu ttf-freefont 
+    - ttf-fira-sans
+    - ttf-font-awesome
+    - ttf-gelasio-ib
+    - ttf-google-fonts-git
+    - ttf-impallari-cantora
+    - ttf-inconsolata
+    - ttf-inconsolata 
+    - ttf-iosevka
+    - ttf-iosevka-nerd
+    - ttf-junicode
+    - ttf-liberation
+    - ttf-linux-libertine
+    - ttf-linux-libertine 
+    - ttf-merriweather
+    - ttf-monaco
+    - ttf-ms-fonts
+    - ttf-ms-fonts 
+    - ttf-noto-nerd
+    - ttf-opensans
+    - ttf-roboto
+    - ttf-signika
+    - ttf-source-sans-pro-ibx
+    - ttf-symbola
+    - ttf-ubuntu-font-family
+    - ttf-ubuntu-font-family 
+    - ttf-vista-fonts
+    - ttf-vista-fonts 
+    - xorg-xfontsel
 
-- name: Install Cambria and Garamond fonts
-  kewlfft.aur.aur:
-    name: 
-      - ttf-vista-fonts
-      - ebgaramond-otf
-    state: present
-  become: true
-  become_user: aur_builder
-
-- name: Install Amazon fonts
-  kewlfft.aur.aur:
-    name: 
-      - amazon-fonts
     state: present
   become: true
   become_user: aur_builder
