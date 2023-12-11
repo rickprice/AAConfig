@@ -1,7 +1,7 @@
 ---
-- name: Install vpn packages
+- name: Install Fonts
   kewlfft.aur.aur:
-    name: 
+    name:
     # ttf-chromeos-fonts
     # ttf-clear-sans
     # ttf-gentium
@@ -24,29 +24,30 @@
     - powerline-fonts
     - tex-gyre-fonts
     - ttf-bitstream-vera
-    - ttf-bitstream-vera 
+    - ttf-bitstream-vera
     - ttf-caladea
     - ttf-carlito
-    - ttf-courier-prime-emoji
+    # - ttf-courier-prime-emoji
     - ttf-dejavu
-    - ttf-dejavu ttf-freefont 
+    - ttf-dejavu
+    - ttf-freefont
     - ttf-fira-sans
     - ttf-font-awesome
     - ttf-gelasio-ib
     - ttf-google-fonts-git
     - ttf-impallari-cantora
     - ttf-inconsolata
-    - ttf-inconsolata 
+    - ttf-inconsolata
     - ttf-iosevka
     - ttf-iosevka-nerd
     - ttf-junicode
     - ttf-liberation
     - ttf-linux-libertine
-    - ttf-linux-libertine 
+    - ttf-linux-libertine
     - ttf-merriweather
     - ttf-monaco
     - ttf-ms-fonts
-    - ttf-ms-fonts 
+    - ttf-ms-fonts
     - ttf-noto-nerd
     - ttf-opensans
     - ttf-roboto
@@ -54,9 +55,9 @@
     - ttf-source-sans-pro-ibx
     - ttf-symbola
     - ttf-ubuntu-font-family
-    - ttf-ubuntu-font-family 
+    - ttf-ubuntu-font-family
     - ttf-vista-fonts
-    - ttf-vista-fonts 
+    - ttf-vista-fonts
     - xorg-xfontsel
 
     state: present
