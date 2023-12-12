@@ -17,7 +17,7 @@
       - hugin
       - gphoto2
     # Collages
-      - photocollage
+      # - photocollage
     # Drawing
       - inkscape
     # File Manager Stuff
