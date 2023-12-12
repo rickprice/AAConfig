@@ -16,7 +16,8 @@
 - name: Install keyd packages and setup
   community.general.pacman:
     name: 
-      - keyd
+      # For some reason we have issues when trying to load just "keyd", so use -git version
+      - keyd-git
     executable: paru
     state: present
 
