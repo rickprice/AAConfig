@@ -30,6 +30,8 @@
       - reflector
       # For hardware video acceleration
       - libva-utils
+      - intel-media-driver
+      - linux-firmware
     state: present
   become: yes
   become_user: aur_builder
