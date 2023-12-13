@@ -28,6 +28,8 @@
       - fd
       - dotter-rs
       - reflector
+      # For hardware video acceleration
+      - libva-utils
     state: present
   become: yes
   become_user: aur_builder
