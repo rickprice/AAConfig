@@ -26,7 +26,8 @@
       - gnome-system-monitor
       - dmenu-frecency-git
       - volumeicon
-      - xfce4-power-manager
+      # - xfce4-power-manager
+      - cbatticon
       - pamac-aur
       - network-manager-applet
       - xmlstarlet
