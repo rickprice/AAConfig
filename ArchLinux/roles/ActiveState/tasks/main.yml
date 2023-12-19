@@ -29,6 +29,8 @@
       - k9s
     # For doing XML stuff
       # - xmllib
+    # Python formatter
+      - ruff
     state: present
   become: yes
   become_user: aur_builder
