@@ -1,4 +1,4 @@
-- name: Install 1Password
+- name: Install ActiveState useful packages
   kewlfft.aur.aur:
     name: 
       - 1password
@@ -31,6 +31,8 @@
       # - xmllib
     # Python formatter
       - ruff
+    # Bazel
+      - bazel
     state: present
   become: yes
   become_user: aur_builder

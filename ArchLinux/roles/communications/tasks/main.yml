@@ -3,6 +3,7 @@
     name: 
       - discord
       - slack-electron
+      - neomutt
     state: absent
 
 - name: Install communication packages

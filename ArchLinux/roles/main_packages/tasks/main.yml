@@ -21,11 +21,13 @@
       - xpub
       - github-cli
       - difftastic
+      - less
       - bat
       - libreoffice-fresh
       - calibre
       - hub
       - fd
+      - ripgrep
       - dotter-rs
       - reflector
       # For hardware video acceleration

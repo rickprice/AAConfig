@@ -14,12 +14,12 @@
     append: yes
 
 - name: Install keyd packages and setup
-  community.general.pacman:
+  kewlfft.aur.aur:
     name: 
       # For some reason we have issues when trying to load just "keyd", so use -git version
       - keyd-git
-    executable: paru
-    state: present
+  become: yes
+  become_user: aur_builder
 
 - name: Enable and start keyd service
   ansible.builtin.systemd:
