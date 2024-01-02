@@ -30,6 +30,7 @@
       - ripgrep
       - dotter-rs
       - reflector
+      - trash-cli
       # For hardware video acceleration
       - libva-utils
       - intel-media-driver
