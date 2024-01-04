@@ -35,6 +35,8 @@
       - libva-utils
       - intel-media-driver
       - linux-firmware
+      # Incredibly useful command line REST utility
+      - httpie
     state: present
   become: yes
   become_user: aur_builder
