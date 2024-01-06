@@ -16,11 +16,11 @@
     executable: paru
     state: present
 
-- name: Enable cups service
-  ansible.builtin.systemd:
-    name: cups
-    state: started
-    enabled: true
+# - name: Enable cups service
+#   ansible.builtin.systemd:
+#     name: cups
+#     state: started
+#     enabled: true
 
 - name: Install Epson packages
   kewlfft.aur.aur:
