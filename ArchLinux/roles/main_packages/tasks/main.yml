@@ -32,6 +32,7 @@
       - reflector
       - trash-cli
       - meld
+      - arandr
       # For hardware video acceleration
       - libva-utils
       - intel-media-driver
