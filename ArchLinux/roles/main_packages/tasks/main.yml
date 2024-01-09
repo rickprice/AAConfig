@@ -33,6 +33,7 @@
       - trash-cli
       - meld
       - arandr
+      - tree
       # For hardware video acceleration
       - libva-utils
       - intel-media-driver
