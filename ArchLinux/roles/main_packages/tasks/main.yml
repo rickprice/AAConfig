@@ -41,6 +41,12 @@
       - linux-firmware
       # Incredibly useful command line REST utility
       - httpie
+    # PKGBUILD Stuff
+      - pigz
+      - pbzip2
+      - lbzip2
+      - plzip
+      - pacman-contrib
     state: present
   become: yes
   become_user: aur_builder
