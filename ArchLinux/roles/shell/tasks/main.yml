@@ -29,7 +29,7 @@
   args:
     executable: /usr/bin/fish
   become: true
-  become_user: {{ remote_regular_user }}
+  become_user: "{{ remote_regular_user }}"
 
 - name: Configure fisher-ssh-agent
   ansible.builtin.shell: |
@@ -37,7 +37,7 @@
   args:
     executable: /usr/bin/fish
   become: true
-  become_user: {{ remote_regular_user }}
+  become_user: "{{ remote_regular_user }}"
 
 - name: Configure HomeRepotTools
   ansible.builtin.shell: |
@@ -45,7 +45,7 @@
   args:
     executable: /usr/bin/fish
   become: true
-  become_user: {{ remote_regular_user }}
+  become_user: "{{ remote_regular_user }}"
 
 #
 # - name: Set PATH for Bash environment variable
