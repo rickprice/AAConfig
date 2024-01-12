@@ -47,6 +47,8 @@
       - lbzip2
       - plzip
       - pacman-contrib
+    # JSON
+      - jq
     state: present
   become: yes
   become_user: aur_builder
