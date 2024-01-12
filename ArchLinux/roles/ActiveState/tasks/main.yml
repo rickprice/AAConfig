@@ -32,7 +32,7 @@
     # Python formatter
       # - ruff # We now seem to include it in the THR
     # Bazel
-      - bazel
+      - bazelisk
     state: present
   become: yes
   become_user: aur_builder
