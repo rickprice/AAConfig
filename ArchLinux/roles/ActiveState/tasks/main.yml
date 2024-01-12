@@ -30,7 +30,7 @@
     # For doing XML stuff
       # - xmllib
     # Python formatter
-      - ruff
+      # - ruff # We now seem to include it in the THR
     # Bazel
       - bazel
     state: present
