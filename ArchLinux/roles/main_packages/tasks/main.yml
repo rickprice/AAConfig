@@ -35,6 +35,7 @@
       - arandr
       - tree
       - libxml2
+      - man
       # For hardware video acceleration
       - libva-utils
       - intel-media-driver
