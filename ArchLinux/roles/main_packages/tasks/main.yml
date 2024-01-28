@@ -36,6 +36,7 @@
       - tree
       - libxml2
       - man
+      - ansifilter
       # For hardware video acceleration
       - libva-utils
       - intel-media-driver
