@@ -37,6 +37,7 @@
       - libxml2
       - man
       - ansifilter
+      - klogg
       # For hardware video acceleration
       - libva-utils
       - intel-media-driver
