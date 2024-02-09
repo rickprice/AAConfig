@@ -2,6 +2,7 @@
   set_fact:
     remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
     printer_ip: 192.168.50.253
+    printer_ip2: 192.168.50.144
 
 - name: Add the user '{{ remote_regular_user }}' to the lp group
   ansible.builtin.user:
@@ -43,10 +44,19 @@
   become: true
   become_user: aur_builder
 
-- name: Configure Brother printer
+- name: Configure New Brother printer
+  ansible.builtin.shell: |
+    /usr/bin/brsaneconfig4 -a name=BROTHER model=MFC-L2730DW ip="{{ printer_ip2 }}"
+
+- name: Add New Brother printer to installed printers
+  ansible.builtin.shell: |
+    lpadmin -p MFC-L2730DW -E -v "ipp://{{ printer_ip2 }}/ipp/print" -m everywhere
+
+
+- name: Configure Old Brother printer
   ansible.builtin.shell: |
     /usr/bin/brsaneconfig4 -a name=BROTHER model=MFC-L2700DW ip="{{ printer_ip }}"
 
-- name: Add Brother printer to installed printers
+- name: Add Brother Old printer to installed printers
   ansible.builtin.shell: |
     lpadmin -p MFC-L2700DW -E -v "ipp://{{ printer_ip }}/ipp/print" -m everywhere
