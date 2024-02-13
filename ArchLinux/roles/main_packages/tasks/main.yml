@@ -55,6 +55,8 @@
     # general
       - figlet
       - keepassxc
+    # Eric Bad videos
+      - xdotool
     state: present
   become: yes
   become_user: aur_builder
