@@ -54,6 +54,7 @@
       - jq
     # general
       - figlet
+      - keepassxc
     state: present
   become: yes
   become_user: aur_builder
