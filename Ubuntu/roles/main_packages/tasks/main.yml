@@ -62,6 +62,7 @@
 - name: Install Dotter
   community.general.cargo:
     name: dotter
+    executable: /home/church/.cargo/bin/cargo
     path: /usr/local
     state: latest
   become: true
