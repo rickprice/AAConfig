@@ -17,6 +17,7 @@
       # - calibre
       # - hub
       - fd-find
+      - ripgrep
       - build-essential
       - cmake
       - libfreetype6-dev
