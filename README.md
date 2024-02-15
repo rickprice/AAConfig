@@ -22,6 +22,7 @@ Setup keyboard correctly for DVorak before doing disk encryption
 
 ## Setup computer using Ansible
 > ansible-galaxy collection install -r requirements.yml
+> ansible-galaxy install -r requirements.yml
 > ansible-playbook --ask-become-pass --connection=local setup_computer_basic.yml
 
 ## Setup computer using dotter

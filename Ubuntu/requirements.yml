@@ -1,5 +1,5 @@
 collections:
 - community.general
 
-# Roles
+roles:
 - src: ihmels.rpmfusion_repo
