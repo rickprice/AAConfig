@@ -1,4 +1,8 @@
 ---
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
 - name: Install main packages
   package:
     name: 
@@ -38,7 +42,7 @@
   register: cargo_exists
   ignore_errors: yes
   become: true
-  become_user: "{{ ansible_env.USER }}"
+  become_user: "{{ remote_regular_user }}"
 
 - name: Download Installer
   when: cargo_exists is failed
@@ -55,14 +59,14 @@
   shell: /tmp/sh.rustup.rs -y
   become: true
   # become_user: "{{ ansible_env.USER }}"
-  become_user: church
+  become_user: {{ remote_regular_user }}
   tags:
     - rust
 
 - name: Install Dotter
   community.general.cargo:
     name: dotter
-    executable: /home/church/.cargo/bin/cargo
+    executable: /home/{{ remote_regular_user }}/.cargo/bin/cargo
     path: /usr/local
     state: latest
   become: true
