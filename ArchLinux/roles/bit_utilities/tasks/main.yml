@@ -3,6 +3,7 @@
     name: 
       - tixati
       - rclone
+      - gnome-multi-writer
     state: present
   become: yes
   become_user: aur_builder
