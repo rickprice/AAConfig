@@ -1,0 +1,40 @@
+---
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
+- name: Install window manager packages
+  package:
+    name: 
+      - i3
+      - i3status
+      - udiskie
+      - pcmanfm
+      - alacritty
+      - build-essential
+      - curl
+      # stuff to make a desktop work
+      - feh
+      - gnome-system-monitor
+      - bemenu
+      # - volumeicon
+      - xfce4-power-manager
+      # For Trayer-srg
+      - gdk-pixbuf2-devel
+      - gtk2-devel
+      # Needed development tools for XMonad etc
+      # - '@Development tools'
+      # - '@c-development'
+      - gcc-c++
+      # - redhat-rpm-config
+      # Notify-send for destkop notifications
+      - libnotify
+    state: present
+  become: true
+
+- name: Create external_repo directory
+  ansible.builtin.file:
+    path: /home/{{remote_regular_user}}/Documents/external_repo
+    state: directory
+    mode: '0755'
+

@@ -3,5 +3,7 @@
   connection: local
   become: true
   roles:
+    - main_packages
+    - window_manager_i3
     - ssh
     - openlp

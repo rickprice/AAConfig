@@ -3,7 +3,7 @@
   package:
     name: 
       - alacritty
-      - git-delta
+      # - git-delta
       # - perl
       # - perl-local-lib
       # - perl-archive-zip
@@ -14,8 +14,8 @@
       - gh
       - bat
       - libreoffice
-      - calibre
-      - hub
+      # - calibre
+      # - hub
       - fd-find
       - rustc
       - cargo
@@ -27,12 +27,12 @@
     state: present
   become: true
 
-- name: Install Snap applications
-  snap:
-    name: 
-      - lazygit-gm
-      - difftastic
-    state: present
+# - name: Install Snap applications
+#   snap:
+#     name: 
+#       - lazygit-gm
+#       - difftastic
+#     state: present
 
 - name: Install Dotter
   community.general.cargo:
