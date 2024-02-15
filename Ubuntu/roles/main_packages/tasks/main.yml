@@ -51,6 +51,8 @@
 - name: install rust/cargo
   when: cargo_exists is failed
   shell: /tmp/sh.rustup.rs -y
+  become: true
+  become_user: "{{ remote_regular_user }}"
   tags:
     - rust
 
