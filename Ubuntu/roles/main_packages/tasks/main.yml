@@ -54,7 +54,8 @@
   when: cargo_exists is failed
   shell: /tmp/sh.rustup.rs -y
   become: true
-  become_user: "{{ ansible_env.USER }}"
+  # become_user: "{{ ansible_env.USER }}"
+  become_user: church
   tags:
     - rust
 
