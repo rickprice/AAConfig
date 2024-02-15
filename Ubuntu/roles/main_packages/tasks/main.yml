@@ -58,15 +58,14 @@
   when: cargo_exists is failed
   shell: /tmp/sh.rustup.rs -y
   become: true
-  # become_user: "{{ ansible_env.USER }}"
-  become_user: {{ remote_regular_user }}
+  become_user: "{{ remote_regular_user }}"
   tags:
     - rust
 
 - name: Install Dotter
   community.general.cargo:
     name: dotter
-    executable: /home/{{ remote_regular_user }}/.cargo/bin/cargo
+    executable: "/home/{{ remote_regular_user }}/.cargo/bin/cargo"
     path: /usr/local
     state: latest
   become: true
