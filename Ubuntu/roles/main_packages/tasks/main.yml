@@ -37,6 +37,8 @@
   shell: command -v cargo
   register: cargo_exists
   ignore_errors: yes
+  become: true
+  become_user: "{{ ansible_env.USER }}"
 
 - name: Download Installer
   when: cargo_exists is failed
@@ -52,7 +54,7 @@
   when: cargo_exists is failed
   shell: /tmp/sh.rustup.rs -y
   become: true
-  become_user: "{{ remote_regular_user }}"
+  become_user: "{{ ansible_env.USER }}"
   tags:
     - rust
 
