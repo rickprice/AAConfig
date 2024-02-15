@@ -30,12 +30,12 @@
     state: present
   become: true
 
-# - name: Install Snap applications
-#   snap:
-#     name: 
-#       - lazygit-gm
-#       - difftastic
-#     state: present
+- name: Install Snap applications
+  snap:
+    name:
+      - lazygit-gm
+      - difftastic
+    state: present
 
 - name: check if cargo is installed
   shell: command -v cargo
@@ -70,6 +70,6 @@
     state: latest
   become: true
 
-- name: Install Wezterm
-  ansible.builtin.apt:
-    deb: https://github.com/wez/wezterm/releases/download/20230712-072601-f4abf8fd/wezterm-20230712-072601-f4abf8fd.Ubuntu22.04.deb
+# - name: Install Wezterm
+#   ansible.builtin.apt:
+#     deb: https://github.com/wez/wezterm/releases/download/20230712-072601-f4abf8fd/wezterm-20230712-072601-f4abf8fd.Ubuntu22.04.deb
