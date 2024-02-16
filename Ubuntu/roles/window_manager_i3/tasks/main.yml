@@ -16,7 +16,8 @@
       - feh
       - gnome-system-monitor
       - bemenu
-      # - volumeicon
+      - volumeicon-alsa
+      - xterm
       - xfce4-power-manager
     state: present
   become: true
