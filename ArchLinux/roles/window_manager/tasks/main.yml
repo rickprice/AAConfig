@@ -34,6 +34,7 @@
       - meteo-qt
       - ttf-weather-icons
       - gnome-calculator
+      - autorandr
     state: present
   become: true
   become_user: aur_builder
