@@ -32,6 +32,7 @@
     - otf-overpass
     - powerline-fonts
     - tex-gyre-fonts
+    - gnu-free-fonts
     - ttf-bitstream-vera
     - ttf-bitstream-vera
     - ttf-caladea
@@ -68,6 +69,8 @@
     - ttf-vista-fonts
     - ttf-vista-fonts
     - xorg-xfontsel
+    # For Postscript 3 fonts
+    - phostpdl 
 
     state: present
   become: true
