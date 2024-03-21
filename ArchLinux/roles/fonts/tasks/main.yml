@@ -103,6 +103,15 @@
     state: link
   become: true
 
+- name: Texlive Fonts
+  ansible.builtin.file:
+    src: /usr/share/fontconfig/conf.avail/09-texlive-fonts.conf
+    dest: /etc/fonts/conf.d/09-texlive-fonts.conf
+    owner: root
+    group: root
+    state: link
+  become: true
+
 - name: Ensure we are using subpixel hinting
   ansible.builtin.lineinfile:
     path: /etc/profile.d/freetype2.sh
