@@ -31,6 +31,8 @@
       - ufraw-thumbnailer
       # My package to convert Google Takeout Location Data
       - google-location-history-converter
+    # Lens calibration utilities
+      - lens-calibrate
     state: present
   become: True
   become_user: aur_builder
