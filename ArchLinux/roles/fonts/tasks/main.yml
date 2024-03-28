@@ -69,7 +69,7 @@
     - ttf-vista-fonts
     - xorg-xfontsel
     # For Postscript 3 fonts
-    - phostpdl 
+    - ghostpdl 
 
     state: present
   become: true
