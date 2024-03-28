@@ -68,6 +68,7 @@
     - ttf-ubuntu-font-family
     - ttf-vista-fonts
     - xorg-xfontsel
+    - texlive-core
     - texlive-fontsrecommended
     - texlive-fontsextra
     # For Postscript 3 fonts
