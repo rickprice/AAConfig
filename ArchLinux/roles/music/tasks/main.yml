@@ -1,0 +1,15 @@
+---
+- name: Install music packages
+  kewlfft.aur.aur:
+    name: 
+      - kmetronome
+      - soundfont-fluid
+      - fluidplug-git
+      - fluidsynth
+      - qsynth
+      - pro-audio 
+      - realtime-generic-setup
+    state: present
+  become: true
+  become_user: aur_builder
+
