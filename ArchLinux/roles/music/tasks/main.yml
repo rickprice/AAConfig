@@ -2,11 +2,15 @@
 - name: Install music packages
   kewlfft.aur.aur:
     name: 
+      # Metronome
       - kmetronome
+      # Synthesizer ?front end?
+      - qsynth
+      # Virtual MIDI keyboard
+      - vmpk
       - soundfont-fluid
       - fluidplug-git
       - fluidsynth
-      - qsynth
       - pro-audio 
       - realtime-generic-setup
     state: present
