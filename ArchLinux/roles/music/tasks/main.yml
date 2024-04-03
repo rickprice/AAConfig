@@ -11,6 +11,12 @@
     groups: audio
     append: yes
 
+- name: Add the user '{{ remote_regular_user }}' to the realtime group
+  ansible.builtin.user:
+    name: '{{ remote_regular_user }}'
+    groups: realtime
+    append: yes
+
 - name: Install music packages
   kewlfft.aur.aur:
     name: 
