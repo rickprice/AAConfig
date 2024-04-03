@@ -27,7 +27,7 @@
       - realtime-generic-setup
       # - proaudio-meta
       - soundfonts-aur-meta
-      - lv2-plugins-aur-meta
+      # - lv2-plugins-aur-meta
     state: present
   become: true
   become_user: aur_builder
