@@ -25,7 +25,7 @@
       - fluidsynth
       - pro-audio 
       - realtime-generic-setup
-      # - proaudio-meta
+      - proaudio-meta
       - soundfonts-aur-meta
       - lv2-plugins-aur-meta
     state: present
