@@ -35,6 +35,8 @@
       - ttf-weather-icons
       - gnome-calculator
       - autorandr
+      # to ensure we can build things
+      - base-devel
     state: present
   become: true
   become_user: aur_builder
