@@ -22,6 +22,7 @@
       # - proaudio-meta
       - soundfonts-aur-meta
       # - lv2-plugins-aur-meta
+      - fluidsynth-dssi
     state: present
   become: true
   become_user: aur_builder
@@ -38,4 +39,12 @@
     groups: realtime
     append: yes
 
+- name: Link default sound font for fluidsynth
+  ansible.builtin.file:
+    src: /usr/share/soundfonts/FluidR3_GM.sf2
+    dest: /usr/share/soundfonts/default.sf2
+    owner: root
+    group: root
+    state: link
+  become: true
 
