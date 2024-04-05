@@ -5,18 +5,6 @@
     printer_ip: 192.168.50.253
     printer_ip2: 192.168.50.144
 
-- name: Add the user '{{ remote_regular_user }}' to the audio group
-  ansible.builtin.user:
-    name: '{{ remote_regular_user }}'
-    groups: audio
-    append: yes
-
-- name: Add the user '{{ remote_regular_user }}' to the realtime group
-  ansible.builtin.user:
-    name: '{{ remote_regular_user }}'
-    groups: realtime
-    append: yes
-
 - name: Install music packages
   kewlfft.aur.aur:
     name: 
@@ -37,4 +25,17 @@
     state: present
   become: true
   become_user: aur_builder
+
+- name: Add the user '{{ remote_regular_user }}' to the audio group
+  ansible.builtin.user:
+    name: '{{ remote_regular_user }}'
+    groups: audio
+    append: yes
+
+- name: Add the user '{{ remote_regular_user }}' to the realtime group
+  ansible.builtin.user:
+    name: '{{ remote_regular_user }}'
+    groups: realtime
+    append: yes
+
 
