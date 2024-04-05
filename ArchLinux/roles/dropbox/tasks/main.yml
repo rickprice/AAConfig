@@ -1,4 +1,8 @@
 ---
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
 - name: Install dropbox packages
   kewlfft.aur.aur:
     name: 
@@ -13,3 +17,5 @@
   ansible.builtin.shell: |
     rm -rf ~/.dropbox-dist &&
     install -dm0 ~/.dropbox-dist
+  become: yes
+  become_user: '{{ remote_regular_user }}'
