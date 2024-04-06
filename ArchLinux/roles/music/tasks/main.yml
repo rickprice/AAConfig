@@ -23,6 +23,8 @@
       - fluidsynth-dssi
       # MIDI Debugging
       - midisnoop-git
+      # MIDI programming
+      - python-jack-client
     state: present
   become: true
   become_user: aur_builder
