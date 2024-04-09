@@ -25,6 +25,8 @@
       - midisnoop-git
       # MIDI programming
       - python-jack-client
+      # Reaper seems to want this
+      - libgme
     state: present
   become: true
   become_user: aur_builder
