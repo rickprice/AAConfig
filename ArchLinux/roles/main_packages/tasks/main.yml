@@ -57,6 +57,8 @@
       - keepassxc
     # Eric Bad videos
       - xdotool
+    # For X11 Forwarding
+      - xorg-xauth
     state: present
   become: yes
   become_user: aur_builder
