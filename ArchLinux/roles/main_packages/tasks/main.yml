@@ -61,6 +61,8 @@
       - xorg-xauth
     # Font viewer
       - gnome-font-viewer
+    # PDF viewer
+      - atril
     state: present
   become: yes
   become_user: aur_builder
