@@ -27,6 +27,12 @@
       - python-jack-client
       # Reaper seems to want this
       - libgme
+      # Plugins - but many already seem to be included
+      - lv2-plugins
+      - vst-plugins
+      - vst3-plugins
+      - lsp-plugins
+      - dpf-plugins-vst
     state: present
   become: true
   become_user: aur_builder
