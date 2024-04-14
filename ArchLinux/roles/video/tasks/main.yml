@@ -10,6 +10,8 @@
       - intel-compute-runtime
       - dmidecode
       - clinfo
+      - gst-libav
+      - gst-plugins-ugly
     state: present
   become: true
   become_user: aur_builder
