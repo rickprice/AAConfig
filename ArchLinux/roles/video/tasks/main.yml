@@ -11,7 +11,11 @@
       - dmidecode
       - clinfo
       - gst-libav
+      - gst-plugins-base
+      - gst-plugins-good
+      - gst-plugins-bad
       - gst-plugins-ugly
+      - ffmpeg
     state: present
   become: true
   become_user: aur_builder
