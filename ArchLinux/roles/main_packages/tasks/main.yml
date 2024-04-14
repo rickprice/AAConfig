@@ -23,7 +23,12 @@
       - difftastic
       - less
       - bat
+      # Libreoffice
       - libreoffice-fresh
+      - hunspell
+      - hunspell-en_us
+      - aspell
+
       - calibre
       - hub
       - fd
