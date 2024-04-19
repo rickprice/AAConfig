@@ -33,6 +33,8 @@
       - vst3-plugins
       - lsp-plugins
       - dpf-plugins-vst
+      - carla
+      - reaper
     state: present
   become: true
   become_user: aur_builder

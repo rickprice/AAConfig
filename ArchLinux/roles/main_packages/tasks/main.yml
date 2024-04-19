@@ -24,7 +24,7 @@
       - less
       - bat
       # Libreoffice
-      - libreoffice-fresh
+      - libreoffice-still
       - hunspell
       - hunspell-en_us
       - aspell
