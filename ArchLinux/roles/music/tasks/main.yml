@@ -35,6 +35,8 @@
       - dpf-plugins-vst
       - carla
       - reaper
+      # Video for Ardour
+      - xjadeo
     state: present
   become: true
   become_user: aur_builder
