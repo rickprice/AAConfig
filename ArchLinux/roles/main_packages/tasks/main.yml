@@ -68,6 +68,8 @@
       - gnome-font-viewer
     # PDF viewer
       - atril
+    # Calendar Libraries for Python
+      - python-recurring-ical-events
     state: present
   become: yes
   become_user: aur_builder
