@@ -46,7 +46,7 @@
 
 - name: Configure New Brother printer
   ansible.builtin.shell: |
-    /usr/bin/brsaneconfig4 -a name=BROTHER model=MFC-L2730DW ip="{{ printer_ip2 }}"
+    /usr/bin/brsaneconfig4 -a name=BROTHER_New model=MFC-L2730DW ip="{{ printer_ip2 }}"
 
 - name: Add New Brother printer to installed printers
   ansible.builtin.shell: |
@@ -55,7 +55,7 @@
 
 - name: Configure Old Brother printer
   ansible.builtin.shell: |
-    /usr/bin/brsaneconfig4 -a name=BROTHER model=MFC-L2700DW ip="{{ printer_ip }}"
+    /usr/bin/brsaneconfig4 -a name=BROTHER_Old model=MFC-L2700DW ip="{{ printer_ip }}"
 
 - name: Add Brother Old printer to installed printers
   ansible.builtin.shell: |
