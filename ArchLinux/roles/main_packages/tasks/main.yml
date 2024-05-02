@@ -70,6 +70,8 @@
       - atril
     # Calendar Libraries for Python
       - python-recurring-ical-events
+    # Control EWMH compliant window manager
+      - wmctrl
     state: present
   become: yes
   become_user: aur_builder
