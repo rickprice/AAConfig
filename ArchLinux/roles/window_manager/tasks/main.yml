@@ -37,6 +37,11 @@
       - autorandr
       # to ensure we can build things
       - base-devel
+      # YouTube downloader
+      - yt-dlp
+      - ffmpeg
+      # Video player that can play downloaded YouTube videos
+      - mpv
     state: present
   become: true
   become_user: aur_builder
