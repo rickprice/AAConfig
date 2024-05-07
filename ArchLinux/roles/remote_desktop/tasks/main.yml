@@ -1,0 +1,10 @@
+---
+
+- name: Install remote desktop packages
+  kewlfft.aur.aur:
+    name: 
+      - remmina
+      - freerdp
+    state: present
+  become: yes
+  become_user: aur_builder
