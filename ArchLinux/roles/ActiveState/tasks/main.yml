@@ -33,6 +33,8 @@
       # - ruff # We now seem to include it in the THR
     # Bazel
       - bazelisk
+    # AWS CLI
+      - aws-cli
     state: present
   become: yes
   become_user: aur_builder
