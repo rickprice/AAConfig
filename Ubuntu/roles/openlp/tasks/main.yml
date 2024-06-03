@@ -5,4 +5,5 @@
       - vlc
       - python3-vlc
       - libreoffice
+      - pipenv
     state: present

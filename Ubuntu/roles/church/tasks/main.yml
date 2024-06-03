@@ -1,0 +1,25 @@
+---
+- name: get the non root remote user
+  set_fact:
+    remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
+- name: Install main packages
+  package:
+    name: 
+      - ripgrep
+      - volumeicon-alsa
+      - arandr
+      - autorandr
+      - qpwgraph
+      - pavucontrol
+      - obs-studio
+      - libghc-xmonad-contrib-dev
+      - libghc-xmonad-dev
+      - haskell-stack
+      - xmonad
+      - dmenu
+      - xmobar
+      - trayer
+    state: present
+  become: true
+
