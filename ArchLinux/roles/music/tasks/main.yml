@@ -37,6 +37,8 @@
       - reaper
       # Video for Ardour
       - xjadeo
+      # Organ simulator
+      - aeolus-next-vst3-bin
     state: present
   become: true
   become_user: aur_builder
@@ -45,6 +47,12 @@
   ansible.builtin.user:
     name: '{{ remote_regular_user }}'
     groups: audio
+    append: yes
+
+- name: Add the user '{{ remote_regular_user }}' to the video group
+  ansible.builtin.user:
+    name: '{{ remote_regular_user }}'
+    groups: video
     append: yes
 
 - name: Add the user '{{ remote_regular_user }}' to the realtime group

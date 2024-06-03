@@ -16,6 +16,7 @@
       - xmonad
       - xmonad-contrib
       - xmobar
+      - haskell-hostname
       - stack
       - xorg-fonts-misc
       # Toaster notifications
