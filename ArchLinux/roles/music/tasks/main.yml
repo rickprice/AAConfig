@@ -37,6 +37,7 @@
       - reaper
       # Video for Ardour
       - xjadeo
+      - harvid
       # Organ simulator
       - aeolus-next-vst3-bin
     state: present
