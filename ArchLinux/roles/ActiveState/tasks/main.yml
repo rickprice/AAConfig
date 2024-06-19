@@ -22,7 +22,7 @@
       - python-atlassian-api
       # - pipman-git
     # Python's for testing
-      - python2
+      # - python2
       - python36
     # For PR stuff
       - kubectl
