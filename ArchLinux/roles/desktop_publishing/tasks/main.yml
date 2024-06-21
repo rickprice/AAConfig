@@ -6,6 +6,8 @@
       - scribus
       - gdal
       - libvncserver
+      # For managing PDF documents
+      - python-pypdf
     state: present
   become: true
   become_user: aur_builder
