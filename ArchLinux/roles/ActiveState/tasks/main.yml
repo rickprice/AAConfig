@@ -35,6 +35,8 @@
       - bazelisk
     # AWS CLI
       - aws-cli
+    # Wiggle allows you to patch files that otherwise fail
+      - wiggle
     state: present
   become: yes
   become_user: aur_builder
