@@ -25,4 +25,4 @@
 
 - name: Install TouchOSC
   ansible.builtin.apt:
-    deb: https://hexler.net/pub/touchosc/touchosc-1.3.4.209-linux-arm64.deb
+    deb: https://hexler.net/pub/touchosc/touchosc-1.3.4.209-linux-x64.deb
