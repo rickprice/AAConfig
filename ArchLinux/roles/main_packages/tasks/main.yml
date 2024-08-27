@@ -76,6 +76,8 @@
       - python-qrcode
       - python-zxing-cpp
       - zbar
+      # This one seems to be better at grabbing the QR code from photographs
+      - qrtool
     state: present
   become: yes
   become_user: aur_builder
