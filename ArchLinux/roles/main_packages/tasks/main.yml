@@ -72,6 +72,10 @@
       - python-recurring-ical-events
     # Control EWMH compliant window manager
       - wmctrl
+    # Python packages that I use for personal Stuff
+      - python-qrcode
+      - python-zxing-cpp
+      - zbar
     state: present
   become: yes
   become_user: aur_builder
