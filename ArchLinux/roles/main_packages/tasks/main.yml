@@ -78,6 +78,8 @@
       - zbar
       # This one seems to be better at grabbing the QR code from photographs
       - qrtool
+      # This is so Arch knows what packages I use
+      - pkgstats
     state: present
   become: yes
   become_user: aur_builder
