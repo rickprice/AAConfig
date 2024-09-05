@@ -80,6 +80,8 @@
       - qrtool
       # This is so Arch knows what packages I use
       - pkgstats
+      # This is to convert SVG to png (particularly for PricePixelDesignHouse)
+      - resvg
     state: present
   become: yes
   become_user: aur_builder
