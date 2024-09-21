@@ -72,7 +72,7 @@
     - texlive-fontsrecommended
     - texlive-fontsextra
     # For Postscript 3 fonts
-    - ghostpdl 
+    # - ghostpdl 
     # Get sudo padlock icon to work correctly
     - ttf-nerd-fonts-symbols-mono
 
