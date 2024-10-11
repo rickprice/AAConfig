@@ -37,6 +37,8 @@
       - aws-cli
     # Wiggle allows you to patch files that otherwise fail
       - wiggle
+    # ActiveState requires that our ScreenSaver lock the screen after 20 minutes
+      - xscreensaver
     state: present
   become: yes
   become_user: aur_builder
