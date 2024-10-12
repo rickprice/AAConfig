@@ -9,6 +9,7 @@
   kewlfft.aur.aur:
     name: 
       - wezterm
+      - tmux
       - alacritty
       - git-delta
       - perl
