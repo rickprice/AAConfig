@@ -83,6 +83,8 @@
       - pkgstats
       # This is to convert SVG to png (particularly for PricePixelDesignHouse)
       - resvg
+      # OCR Software, bringing in the data should bring in the main executable as well
+      - tesseract-data-eng
     state: present
   become: yes
   become_user: aur_builder
