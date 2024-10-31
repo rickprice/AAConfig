@@ -4,7 +4,7 @@
     remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
 
 - name: Install Church packages
-  package:
+  kewlfft.aur.aur:
     name: 
       - qpwgraph
       - obs-studio
