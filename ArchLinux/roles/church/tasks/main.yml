@@ -9,6 +9,7 @@
       - qpwgraph
       - obs-studio
       - openlp
+      - python-vlc
       - touchosc-bin
     state: present
   become: true
