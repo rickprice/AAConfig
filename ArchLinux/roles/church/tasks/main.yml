@@ -12,6 +12,7 @@
       - python-vlc
       - touchosc-bin
       - python-pipenv
+      - python-openlp-osc-control
     state: present
   become: true
   become_user: aur_builder
