@@ -19,6 +19,6 @@
 
 - name: Enable and start OpenLPOSCControl service
   ansible.builtin.systemd:
-    name: OpenLPOSCControl
+    name: OpenLPOSCControl@church
     state: started
     enabled: true
