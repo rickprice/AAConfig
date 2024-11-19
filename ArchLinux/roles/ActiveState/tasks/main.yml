@@ -39,6 +39,9 @@
       - wiggle
     # ActiveState requires that our ScreenSaver lock the screen after 20 minutes
       - xscreensaver
+    # crudini is very useful
+      - python-iniparse-git
+      - crudini
     state: present
   become: yes
   become_user: aur_builder
