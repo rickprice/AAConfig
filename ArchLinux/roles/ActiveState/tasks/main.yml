@@ -42,6 +42,14 @@
     # crudini is very useful
       - python-iniparse-git
       - crudini
+    # ActiveState uses the vanta agent
+      - vanta-agent
     state: present
   become: yes
   become_user: aur_builder
+
+- name: Enable vanta-agent service
+  ansible.builtin.systemd:
+    name: vanta-agent
+    state: started
+    enabled: true
