@@ -27,6 +27,7 @@
       - gnome-system-monitor
       - dmenu-frecency-git
       - volumeicon
+      - udiskie
       # - xfce4-power-manager
       - cbatticon
       - pamac-aur
