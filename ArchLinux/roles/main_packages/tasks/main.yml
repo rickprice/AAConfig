@@ -8,6 +8,7 @@
 - name: Install main packages
   kewlfft.aur.aur:
     name: 
+      - luarocks
       - wezterm
       - tmux
       - alacritty
