@@ -1,6 +1,6 @@
 - name: Install ActiveState useful packages
   kewlfft.aur.aur:
-    name: 
+    name:
       - 1password
       # Fix state tool libxcrypt problems
       - libxcrypt-compat
@@ -44,6 +44,8 @@
       - crudini
     # ActiveState uses the vanta agent
       - vanta-agent
+    # ActiveState wants us to use tailscale
+      - tailscale
     state: present
   become: yes
   become_user: aur_builder
@@ -51,5 +53,11 @@
 - name: Enable vanta-agent service
   ansible.builtin.systemd:
     name: vanta-agent
+    state: started
+    enabled: true
+
+- name: Enable tailscale agent service
+  ansible.builtin.systemd:
+    name: tailscaled
     state: started
     enabled: true
