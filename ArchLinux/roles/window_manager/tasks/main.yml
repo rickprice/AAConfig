@@ -33,7 +33,7 @@
       - pamac-aur
       - network-manager-applet
       - xmlstarlet
-      - meteo-qt-git
+      - meteo-qt
       - ttf-weather-icons
       - gnome-calculator
       - autorandr
