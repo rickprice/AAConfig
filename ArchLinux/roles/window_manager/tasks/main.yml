@@ -44,6 +44,8 @@
       - ffmpeg
       # Video player that can play downloaded YouTube videos
       - mpv
+      # Allow us to connect/disconnect from X11 sessions, this seems to come preloaded on many docker containers
+      - xpra
     state: present
   become: true
   become_user: aur_builder
