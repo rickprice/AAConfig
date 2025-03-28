@@ -86,6 +86,8 @@
       - resvg
       # OCR Software, bringing in the data should bring in the main executable as well
       - tesseract-data-eng
+      # Software to display images in the terminal
+      - timg
     state: present
   become: yes
   become_user: aur_builder
