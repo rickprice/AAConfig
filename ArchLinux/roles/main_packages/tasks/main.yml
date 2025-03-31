@@ -88,6 +88,8 @@
       - tesseract-data-eng
       # Software to display images in the terminal
       - timg
+      # Terminal browser
+      - elinks
     state: present
   become: yes
   become_user: aur_builder
