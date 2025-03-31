@@ -90,6 +90,8 @@
       - timg
       # Terminal browser
       - elinks
+      # For PDF in Mutt
+      - zathura
     state: present
   become: yes
   become_user: aur_builder
