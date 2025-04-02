@@ -10,6 +10,7 @@
       - picom
       - xautolock
       - i3-scrot
+      - i3status
       - xorg-xkill
       - xorg-xwininfo
       # XMonad
