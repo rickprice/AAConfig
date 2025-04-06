@@ -1,0 +1,104 @@
+---
+- name: Update Arch Linux with AUR, logging, reboots, and cleanup
+  hosts: arch_machines, localhost
+  become: yes
+  vars:
+    aur_helper: yay
+    log_file: /var/log/ansible-updates.log
+  tasks:
+    - name: Ensure base-devel, git, and pacman-contrib are installed
+      pacman:
+        name:
+          - base-devel
+          - git
+          - pacman-contrib  # For paccache
+        state: present
+
+    - name: Check if yay is installed
+      become: false
+      command: which {{ aur_helper }}
+      register: yay_check
+      ignore_errors: true
+      changed_when: false
+
+    - name: Install yay if not present
+      become: false
+      when: yay_check.rc != 0
+      block:
+        - name: Clone yay from AUR
+          git:
+            repo: https://aur.archlinux.org/yay.git
+            dest: /tmp/yay
+            clone: yes
+            update: no
+
+        - name: Build and install yay
+          shell: makepkg -si --noconfirm
+          args:
+            chdir: /tmp/yay
+            executable: /bin/bash
+
+        - name: Clean up yay build directory
+          file:
+            path: /tmp/yay
+            state: absent
+
+    - name: Get current running kernel version
+      shell: uname -r
+      register: current_kernel
+      changed_when: false
+
+    - name: Update pacman cache
+      pacman:
+        update_cache: yes
+
+    - name: Upgrade system packages and log
+      shell: |
+        echo "== $(date) ==" >> {{ log_file }}
+        pacman -Syu --noconfirm >> {{ log_file }} 2>&1
+      args:
+        executable: /bin/bash
+
+    - name: Update AUR packages with yay and log
+      become: false
+      shell: |
+        echo "== AUR Updates: $(date) ==" >> {{ log_file }}
+        {{ aur_helper }} -Syu --noconfirm >> {{ log_file }} 2>&1
+      args:
+        executable: /bin/bash
+
+    - name: Get installed kernel version
+      shell: pacman -Q linux | awk '{print $2}'
+      register: new_kernel
+      changed_when: false
+
+    - name: Reboot if kernel changed
+      reboot:
+        msg: "Rebooting due to kernel upgrade"
+        connect_timeout: 5
+        reboot_timeout: 300
+        test_command: whoami
+      when: current_kernel.stdout not in new_kernel.stdout
+
+    - name: Notify user after reboot
+      shell: |
+        wall "Ansible: System {{ inventory_hostname }} rebooted and fully updated on $(date)."
+      args:
+        executable: /bin/bash
+
+    # 🔽 Cleanup Section
+    - name: Clean pacman cache (keep 3 versions)
+      shell: paccache -r -k3 >> {{ log_file }} 2>&1
+      args:
+        executable: /bin/bash
+
+    - name: Vacuum journal logs older than 2 weeks
+      shell: journalctl --vacuum-time=2weeks >> {{ log_file }} 2>&1
+      args:
+        executable: /bin/bash
+
+    - name: Run tmpfiles cleanup
+      shell: systemd-tmpfiles --clean >> {{ log_file }} 2>&1
+      args:
+        executable: /bin/bash
+
