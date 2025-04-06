@@ -94,6 +94,8 @@
       - zathura
       # Add urlscan for mutt to show links in browser
       - ursscan
+      # To do automatic updates with Ansible
+      - yay
     state: present
   become: yes
   become_user: aur_builder
