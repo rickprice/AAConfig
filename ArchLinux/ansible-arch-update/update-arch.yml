@@ -1,9 +1,9 @@
 ---
-- name: Update Arch Linux with AUR, logging, reboots, and cleanup
-  hosts: arch_machines, localhost
+- name: Update Arch Linux with AUR (paru), logging, reboots, and cleanup
+  hosts: arch_machines,localhost
   become: yes
   vars:
-    aur_helper: yay
+    aur_helper: paru
     log_file: /var/log/ansible-updates.log
   tasks:
     - name: Ensure base-devel, git, and pacman-contrib are installed
@@ -11,36 +11,45 @@
         name:
           - base-devel
           - git
-          - pacman-contrib  # For paccache
+          - pacman-contrib
         state: present
 
-    - name: Check if yay is installed
+    - name: Ensure log file exists with correct permissions
+      become: true
+      file:
+        path: "{{ log_file }}"
+        state: touch
+        owner: aur_builder
+        group: fprice
+        mode: '0664'
+
+    - name: Check if paru is installed
       become: false
       command: which {{ aur_helper }}
-      register: yay_check
+      register: paru_check
       ignore_errors: true
       changed_when: false
 
-    - name: Install yay if not present
+    - name: Install paru if not present
       become: false
-      when: yay_check.rc != 0
+      when: paru_check.rc != 0
       block:
-        - name: Clone yay from AUR
+        - name: Clone paru from AUR
           git:
-            repo: https://aur.archlinux.org/yay.git
-            dest: /tmp/yay
+            repo: https://aur.archlinux.org/paru.git
+            dest: /tmp/paru
             clone: yes
             update: no
 
-        - name: Build and install yay
+        - name: Build and install paru
           shell: makepkg -si --noconfirm
           args:
-            chdir: /tmp/yay
+            chdir: /tmp/paru
             executable: /bin/bash
 
-        - name: Clean up yay build directory
+        - name: Clean up paru build directory
           file:
-            path: /tmp/yay
+            path: /tmp/paru
             state: absent
 
     - name: Get current running kernel version
@@ -54,16 +63,17 @@
 
     - name: Upgrade system packages and log
       shell: |
-        echo "== $(date) ==" >> {{ log_file }}
-        pacman -Syu --noconfirm >> {{ log_file }} 2>&1
+        echo "== $(date) ==" | tee -a {{ log_file }}
+        pacman -Syu --noconfirm 2>&1 | tee -a {{ log_file }}
       args:
         executable: /bin/bash
 
-    - name: Update AUR packages with yay and log
-      become: false
+    - name: Update AUR packages with paru (include devel, skip prompts) and log
+      become: true
+      become_user: aur_builder
       shell: |
-        echo "== AUR Updates: $(date) ==" >> {{ log_file }}
-        {{ aur_helper }} -Syu --noconfirm >> {{ log_file }} 2>&1
+        echo "== AUR Updates (with devel): $(date) ==" >> {{ log_file }}
+        {{ aur_helper }} -Syu --devel --noconfirm --skipreview --sudoloop >> {{ log_file }} 2>&1
       args:
         executable: /bin/bash
 
@@ -86,7 +96,6 @@
       args:
         executable: /bin/bash
 
-    # 🔽 Cleanup Section
     - name: Clean pacman cache (keep 3 versions)
       shell: paccache -r -k3 >> {{ log_file }} 2>&1
       args:
