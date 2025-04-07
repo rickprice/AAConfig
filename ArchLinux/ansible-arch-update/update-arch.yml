@@ -57,16 +57,16 @@
       register: current_kernel
       changed_when: false
 
-    - name: Update pacman cache
-      pacman:
-        update_cache: yes
-
-    - name: Upgrade system packages and log
-      shell: |
-        echo "== $(date) ==" | tee -a {{ log_file }}
-        pacman -Syu --noconfirm 2>&1 | tee -a {{ log_file }}
-      args:
-        executable: /bin/bash
+    # - name: Update pacman cache
+    #   pacman:
+    #     update_cache: yes
+    #
+    # - name: Upgrade system packages and log
+    #   shell: |
+    #     echo "== $(date) ==" | tee -a {{ log_file }}
+    #     pacman -Syu --noconfirm 2>&1 | tee -a {{ log_file }}
+    #   args:
+    #     executable: /bin/bash
 
     - name: Update AUR packages with paru (include devel, skip prompts) and log
       become: true
