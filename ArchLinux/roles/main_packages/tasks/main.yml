@@ -96,6 +96,8 @@
       - ursscan
       # To do automatic updates with Ansible
       - yay
+      # Need DNS utilities sometimes
+      - bind
     state: present
   become: yes
   become_user: aur_builder
