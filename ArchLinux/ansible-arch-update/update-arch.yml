@@ -57,42 +57,12 @@
       register: current_kernel
       changed_when: false
 
-    # - name: Update pacman cache
-    #   pacman:
-    #     update_cache: yes
-    #
-    # - name: Upgrade system packages and log
-    #   shell: |
-    #     echo "== $(date) ==" | tee -a {{ log_file }}
-    #     pacman -Syu --noconfirm 2>&1 | tee -a {{ log_file }}
-    #   args:
-    #     executable: /bin/bash
-
     - name: Update AUR packages with paru (include devel, skip prompts) and log
       become: true
       become_user: aur_builder
       shell: |
         echo "== AUR Updates (with devel): $(date) ==" >> {{ log_file }}
         {{ aur_helper }} -Syu --devel --noconfirm --skipreview --sudoloop >> {{ log_file }} 2>&1
-      args:
-        executable: /bin/bash
-
-    - name: Get installed kernel version
-      shell: pacman -Q linux | awk '{print $2}'
-      register: new_kernel
-      changed_when: false
-
-    - name: Reboot if kernel changed
-      reboot:
-        msg: "Rebooting due to kernel upgrade"
-        connect_timeout: 5
-        reboot_timeout: 300
-        test_command: whoami
-      when: current_kernel.stdout not in new_kernel.stdout
-
-    - name: Notify user after reboot
-      shell: |
-        wall "Ansible: System {{ inventory_hostname }} rebooted and fully updated on $(date)."
       args:
         executable: /bin/bash
 

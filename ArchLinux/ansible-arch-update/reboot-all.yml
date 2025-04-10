@@ -1,0 +1,14 @@
+---
+- name: Reboot Arch Linux machines
+  hosts: arch_machines,localhost
+  become: yes
+  vars:
+    aur_helper: paru
+    log_file: /var/log/ansible-updates.log
+  tasks:
+    - name: "Reboot"
+      reboot:
+        msg: "Rebooting"
+        connect_timeout: 5
+        reboot_timeout: 6000
+        test_command: whoami
