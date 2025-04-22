@@ -26,3 +26,11 @@
     name: keyd
     state: started
     enabled: true
+
+- name: Install other keyboard related packages
+  kewlfft.aur.aur:
+    name: 
+      - numlockx
+  become: yes
+  become_user: aur_builder
+
