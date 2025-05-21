@@ -101,6 +101,8 @@
       # Allow numlock to start in the on state
       # https://wiki.archlinux.org/title/Activating_numlock_on_bootup#Early_bootup_(mkinitcpio)
       - mkinitcpio-numlock
+      # Broot is a good way to find things on the FS
+      - broot
     state: present
   become: yes
   become_user: aur_builder
