@@ -103,6 +103,8 @@
       - mkinitcpio-numlock
       # Broot is a good way to find things on the FS
       - broot
+      # Atuin shell history manager
+      - atuin
     state: present
   become: yes
   become_user: aur_builder
