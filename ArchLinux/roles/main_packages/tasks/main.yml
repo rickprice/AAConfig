@@ -105,6 +105,10 @@
       - broot
       # Atuin shell history manager
       - atuin
+      # Needed by atuin for Bash shell
+      - blesh
+      # zoxide to manage cd 
+      - zoxide
     state: present
   become: yes
   become_user: aur_builder
