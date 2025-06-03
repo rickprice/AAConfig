@@ -1,9 +1,11 @@
+---
 - name: Install bit utilities
   kewlfft.aur.aur:
     name: 
       - tixati
       - rclone
       - gnome-multi-writer
+      - gnome-disk-utility
     state: present
-  become: yes
+  become: true
   become_user: aur_builder
