@@ -113,6 +113,9 @@
       - tailscale
       # To run with Claude
       - claude-code
+      # For Tamara backgrounds
+      - rust-name-time-period
+      - rust-images-matching-subdirectories
     state: present
   become: true
   become_user: aur_builder
