@@ -116,6 +116,8 @@
       # For Tamara backgrounds
       - rust-name-time-period
       - rust-images-matching-subdirectories
+      # This is a better SSH key password deaemon
+      - keychain
     state: present
   become: true
   become_user: aur_builder
