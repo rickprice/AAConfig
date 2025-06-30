@@ -40,6 +40,8 @@
       - harvid
       # Organ simulator
       - aeolus-next-vst3-bin
+      # Great vocal plugin
+      - graillon-free
     state: present
   become: true
   become_user: aur_builder
