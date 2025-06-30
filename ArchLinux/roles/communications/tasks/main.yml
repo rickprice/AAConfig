@@ -3,7 +3,6 @@
     name: 
       - discord
       - slack-electron
-      - neomutt
     state: absent
 
 - name: Install communication packages
@@ -12,6 +11,7 @@
       - discord_arch_electron
       - slack-desktop
       - zoom
+      - neomutt
     state: present
   become: true
   become_user: aur_builder
