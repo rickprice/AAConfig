@@ -93,7 +93,7 @@
       # For PDF in Mutt
       - zathura
       # Add urlscan for mutt to show links in browser
-      - ursscan
+      - urlscan
       # To do automatic updates with Ansible
       - yay
       # Need DNS utilities sometimes

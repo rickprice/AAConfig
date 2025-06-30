@@ -8,7 +8,7 @@
 - name: Install Neovim packages
   kewlfft.aur.aur:
     name: 
-      - neovim-nightly-bin
+      - neovim
       - neovim-symlinks
       - xclip
       - nodejs

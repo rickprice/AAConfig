@@ -61,7 +61,7 @@
     - ttf-noto-nerd
     - ttf-opensans
     - ttf-roboto
-    - ttf-signika
+    # - ttf-signika
     - ttf-source-sans-pro-ibx
     # - ttf-symbola
     - ttf-ubuntu-font-family
