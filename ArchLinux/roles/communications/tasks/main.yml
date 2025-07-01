@@ -1,14 +1,14 @@
 - name: Remove packages because we are now using the native Arch ones
   community.general.pacman:
     name: 
-      - discord
+      - discord_arch_electron
       - slack-electron
     state: absent
 
 - name: Install communication packages
   kewlfft.aur.aur:
     name: 
-      - discord_arch_electron
+      - discord
       - slack-desktop
       - zoom
       - neomutt
