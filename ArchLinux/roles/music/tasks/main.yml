@@ -18,7 +18,7 @@
       - pro-audio 
       - realtime-generic-setup
       # - proaudio-meta
-      - soundfonts-aur-meta
+      # - soundfonts-aur-meta
       # - lv2-plugins-aur-meta
       - fluidsynth-dssi
       # MIDI Debugging
