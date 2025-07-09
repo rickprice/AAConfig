@@ -10,6 +10,13 @@
       - pipewire-alsa 
       - wireplumber 
       - qpwgraph
+      - ardour
+      - k3b
+      - cdrdao
+      - cdrtools
+      - dvd+rw-tools
+      - emovix
+      - vcdimager
     state: present
   become: true
   become_user: aur_builder
