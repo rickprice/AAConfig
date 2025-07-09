@@ -118,6 +118,8 @@
       - rust-images-matching-subdirectories
       # This is a better SSH key password deaemon
       - keychain
+      # For editing MarkDown files
+      - obsidian
     state: present
   become: true
   become_user: aur_builder
