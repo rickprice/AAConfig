@@ -42,6 +42,8 @@
       - aeolus-next-vst3-bin
       # Great vocal plugin
       - graillon-free
+      # cdrdao GUI
+      - gcdmaster
     state: present
   become: true
   become_user: aur_builder
