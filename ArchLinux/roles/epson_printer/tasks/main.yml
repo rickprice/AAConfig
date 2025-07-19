@@ -27,7 +27,9 @@
     name: 
       # Epson packages
       - epson-inkjet-printer-escpr
-      - epsonscan2
+      - epsonscan2-bin
+      - sane
+      - sane-airscan
       # Presumably used by the installer
       - patch
       # Turbuprint improves colour accuracy
