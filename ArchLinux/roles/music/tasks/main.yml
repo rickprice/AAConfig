@@ -44,6 +44,8 @@
       - graillon-free
       # cdrdao GUI
       - gcdmaster
+      # For adding metadata to WAV files
+      - bwfmetaedit
     state: present
   become: true
   become_user: aur_builder
