@@ -21,7 +21,8 @@
       - stack
       - xorg-fonts-misc
       # Toaster notifications
-      - wired
+      # - wired
+      - dunst
       # stuff to make a desktop work
       - trayer-srg
       - feh
