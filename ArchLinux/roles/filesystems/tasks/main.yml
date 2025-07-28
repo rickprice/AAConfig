@@ -9,6 +9,7 @@
       - util-linux
       # THis is so you can connect a phone to the computer
       - gvfs-mtp
+      - syncthing
     executable: paru
     state: present
 
