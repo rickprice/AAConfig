@@ -46,6 +46,8 @@
       - gcdmaster
       # For adding metadata to WAV files
       - bwfmetaedit
+      # X42 plugins
+      - x42-plugins
     state: present
   become: true
   become_user: aur_builder
