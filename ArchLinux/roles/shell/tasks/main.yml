@@ -11,10 +11,20 @@
       - fzf
       - zoxide
       - starship
+      - zsh
+      - zsh-syntax-highlighting 
+      - zsh-autosuggestions
     state: present
   become: true
   become_user: aur_builder
 
+- name: Ensure the user '{{ remote_regular_user }}' has a fish shell.
+  user:
+    name: "{{ remote_regular_user }}"
+    shell: /usr/bin/zsh
+    state: present
+  become: true
+  #
 # - name: Ensure the user '{{ remote_regular_user }}' has a fish shell.
 #   user:
 #     name: "{{ remote_regular_user }}"
