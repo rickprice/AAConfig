@@ -120,6 +120,8 @@
       - keychain
       # For editing MarkDown files
       - obsidian
+      # For showing images
+      - emulsion
     state: present
   become: true
   become_user: aur_builder
