@@ -50,6 +50,7 @@
       - x42-plugins
       # Guitarix
       - neural-amp-modeler-bypass-lv2
+      - lv2bm lv2lint valgrind
     state: present
   become: true
   become_user: aur_builder
